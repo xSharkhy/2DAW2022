@@ -11,37 +11,37 @@
 </head>
 
 <body id="topPage">
-    <?php include_once("PHP/header.inc.php") ?>
-    <main>
-        <article>
-            <header>
-                <h1>2DAW 2022 / 23</h1>
-            </header>
-            <section class="content">
-                <a href="">
-                    <div class="cardLink">
-                        <h4>Desarrollo de Interfaces Web</h4>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="cardLink">
-                        <h4>Desarrollo Web en Entorno Cliente</h4>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="cardLink">
-                        <h4>Desarrollo Web en Entorno Servidor</h4>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="cardLink">
-                        <h4>Inglés Técnico II</h4>
-                    </div>
-                </a>
-            </section>
-        </article>
-    </main>
-    <?php include_once("PHP/footer.inc.php") ?>
+<?php include_once("PHP/header.inc.php") ?>
+<main>
+    <article>
+        <header>
+            <h1>2DAW 2022 / 23</h1>
+        </header>
+        <section class="content">
+            <a href="">
+                <div class="cardLink">
+                    <h4>Desarrollo de Interfaces Web</h4>
+                </div>
+            </a>
+            <a href="">
+                <div class="cardLink">
+                    <h4>Desarrollo Web en Entorno Cliente</h4>
+                </div>
+            </a>
+            <a href="">
+                <div class="cardLink">
+                    <h4>Desarrollo Web en Entorno Servidor</h4>
+                </div>
+            </a>
+            <a href="">
+                <div class="cardLink">
+                    <h4>Inglés Técnico II</h4>
+                </div>
+            </a>
+        </section>
+    </article>
+</main>
+<?php include_once("PHP/footer.inc.php") ?>
 </body>
 
 </html>

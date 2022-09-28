@@ -33,7 +33,7 @@ body {
     overflow: hidden;
 }
 
-.navs a {
+.navs > a {
     float: left;
     display: flex;
     height: 52px;
@@ -44,17 +44,17 @@ body {
     font-size: 20px;
 }
 
-.topnav a:hover {
+.topnav > a:hover {
     background-color: whitesmoke;
     color: black;
 }
 
-.topnav a.active {
+.topnav > a.active {
     background-color: whitesmoke;
     color: black;
 }
 
-.topnav a:first-child {
+.topnav > a:first-child {
     float: right;
     padding: 0;
     margin: 0;
