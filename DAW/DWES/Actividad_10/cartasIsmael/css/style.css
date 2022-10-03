@@ -87,44 +87,19 @@ main {
     text-align: center;
 }
 
+main > img {
+    max-width: 100%;
+    height: auto;
+}
+
 h1 {
     font-size: 50px;
+    margin: auto;
+    padding: 7rem 0 2rem 6rem;
 }
 
-main p {
-    font-size: 20px;
-}
-
-.content {
-    margin-top: 3vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.content div {
-    background-color: black;
-    color: whitesmoke;
-}
-
-.content > a {
-    margin: 1vw;
-    text-decoration: none;
-}
-
-.cardLink {
-    padding: 1vw;
-    height: auto;
-    width: 75vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.cardLink:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.4);
-    transition: 150ms ease-in-out;
-    background-color: whitesmoke;
-    color: black;
+h2 {
+    font-size: 25px;
+    margin: auto;
+    padding: 0;
 }

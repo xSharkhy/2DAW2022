@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    background-color: green;
+}
+
+body {
+    margin: 0 !important;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.par1 {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.par2 {
+    color: wheat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+}
+
+.par3 {
+    color: orange;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+}
+
+.par4 {
+    color: red;
+    font-family: 'Comic Neue', cursive;
+    font-style: normal;
+}
