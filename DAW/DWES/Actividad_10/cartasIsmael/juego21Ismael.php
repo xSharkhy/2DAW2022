@@ -57,7 +57,7 @@
     }
 
     shuffle($cartas);
-    $banca = ["puntuacion" => 0, "gana" => false];
+    $banca = ["puntuacion" => 0];
 
     for ($i = 0; $i < 2; $i++) {
         for ($j = 0; $j < count($jugadores); $j++) {
