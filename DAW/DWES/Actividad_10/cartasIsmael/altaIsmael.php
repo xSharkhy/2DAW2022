@@ -78,7 +78,7 @@
             echo '<img class="jugador" src="imatges/Sobera.png" alt="Empate">';
         } else {
             echo "¡El ganador es $ganador!<br>";
-            echo '<img class="jugador" src="imatges/jugadores/' . $ganador . '.png" alt="Foto de <?= $ganador ?>">';
+            echo '<img class="jugador" src="imatges/jugadores/' . strtolower($ganador) . '.png" alt="Foto de <?= $ganador ?>">';
         }
         ?>
 

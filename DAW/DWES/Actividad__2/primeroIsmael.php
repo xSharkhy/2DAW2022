@@ -67,17 +67,16 @@
         ?>
     </article>
     <article id="sec3">
-        <?php $_anInt = 7 ?>
-        <h1>Tabla de multiplicar del <?= $_anInt ?></h1>
-        <table border="1">
+        <h1>Tabla de multiplicar del <?= $_POST ?></h1>
+        <table border="1" border-collapse="collapse">
             <tr>
                 <td>x</td>
-                <td><?= $_anInt ?></td>
+                <td><?= $_POST ?></td>
             </tr>
             <?php for ($i = 1; $i <= 20; $i++) { ?>
                 <tr>
                     <td><?= $i ?></td>
-                    <td><?= $i * $_anInt ?></td>
+                    <td><?= $i * $_POST[0] ?></td>
                 </tr>
             <?php } ?>
         </table>

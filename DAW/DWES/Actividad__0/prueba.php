@@ -7,6 +7,10 @@
     <title>Primera prueba PHP</title>
 </head>
 <body>
-    Este es un archivo PHP que se encuentra en el servidor
+    <form method="POST" action="../Actividad__2/primeroIsmael.php">
+        <input type="number" name="numero" placeholder="Introduce un número">
+        <input type="submit" value="Enviar">
+    </form>
+    
 </body>
 </html>
