@@ -53,9 +53,9 @@ $cartas = [["palo" => " corazones", "valor" => "1", "imagen" => "cor_1.png"],
     ["palo" => "treboles", "valor" =>"K", "imagen" => "tre_k.png"]
 ];
 
-$jugadores = [1 => ["nombre" => "Paco", "foto" => "paco.png", "puntuacion" => 0],
-    2 => ["nombre" => "Pepe", "foto" => "pepe.png", "puntuacion" => 0],
-    3 => ["nombre" => "Juan", "foto" => "juan.png", "puntuacion" => 0],
-    4 => ["nombre" => "Perico", "foto" => "perico.png", "puntuacion" => 0],
-    5 => ["nombre" => "Andrés", "foto" => "andres.png", "puntuacion" => 0]
+$jugadores = [0 => ["nombre" => "Paco", "foto" => "paco.png", "puntuacion" => 0],
+    1 => ["nombre" => "Pepe", "foto" => "pepe.png", "puntuacion" => 0],
+    2 => ["nombre" => "Juan", "foto" => "juan.png", "puntuacion" => 0],
+    3 => ["nombre" => "Perico", "foto" => "perico.png", "puntuacion" => 0],
+    4 => ["nombre" => "Andres", "foto" => "andres.png", "puntuacion" => 0]
 ];

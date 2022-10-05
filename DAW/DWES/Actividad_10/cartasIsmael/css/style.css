@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: mediumseagreen;
     margin: 0 !important;
 }
 
@@ -82,14 +82,8 @@ body {
 }
 
 main {
-    margin-top: 52px;
     padding: 20px;
     text-align: center;
-}
-
-main > img {
-    max-width: 100%;
-    height: auto;
 }
 
 h1 {
@@ -98,8 +92,67 @@ h1 {
     padding: 7rem 0 2rem 6rem;
 }
 
-h2 {
+#headerH2 {
     font-size: 25px;
     margin: auto;
     padding: 0;
+}
+
+#sobera {
+    max-width: 100%;
+    height: auto;
+}
+
+#cartaAlta {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.jugador {
+    height: 12rem;
+    width: auto;
+    margin: 2px;
+    padding: 0.5rem;
+    background-color: black;
+}
+
+.carta {
+    height: 12rem;
+    width: auto;
+    margin: 2px;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.jugador1.j1, .jugador2.j2  {background-color: lawngreen;}
+
+.empate {background-color: dodgerblue;}
+
+.ganador {
+    border: 2px solid yellowgreen;
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.flex__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex__item {
+    border: 3px solid yellowgreen;
+    border-radius: 10px;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+.flex__item.flex__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.jugadores {
+    flex-grow: 2;
 }

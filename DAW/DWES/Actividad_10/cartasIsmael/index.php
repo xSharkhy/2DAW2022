@@ -11,10 +11,10 @@
 </head>
 
 <body id="topPage">
-    <h1>Juegos de Cartas</h1>
+<h1>Juegos de Cartas</h1>
 <?php include_once("PHP/header.inc.php") ?>
 <main>
-    <img src="imatges/Sobera.png" alt="Carlos Sobera sosté unes cartes.">
+    <img id="sobera" src="imatges/Sobera.png" alt="Carlos Sobera sosté unes cartes.">
 </main>
 </body>
 
