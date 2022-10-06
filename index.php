@@ -35,6 +35,11 @@
             </a>
             <a href="">
                 <div class="cardLink">
+                    <h4>Despliegue de Aplicaciones Web</h4>
+                </div>
+            </a>
+            <a href="">
+                <div class="cardLink">
                     <h4>Inglés Técnico II</h4>
                 </div>
             </a>

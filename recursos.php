@@ -12,8 +12,12 @@
 
 <body id="topPage">
 <?php include_once("PHP/header.inc.php") ?>
-<main>
-
+<main class="recursos">
+    <ul>
+        <li>
+        <img src="imatges/download.svg" alt="Download" height="22"> <a href="recursos/El gran libro de Angular.pdf">El gran libro de Angular</a>
+        </li>
+    </ul>
 </main>
 <?php include_once("PHP/footer.inc.php") ?>
 </body>
