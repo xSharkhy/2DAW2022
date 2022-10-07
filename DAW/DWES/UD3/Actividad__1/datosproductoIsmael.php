@@ -21,10 +21,13 @@
 <body>
     <?php
 
+    $_GET['precio'] .= " €";
+    $_GET['cantidad'] .= " unidades";
+    
     echo '<table>';
     foreach ($_GET as $key => $value) {
         echo '<tr>';
-        echo '<th>' . $key . '</th>';
+        echo '<th>' . ucfirst($key) . '</th>';
         echo '<td>' . $value . '</td>';
         echo '</tr>';
     }
