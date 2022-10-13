@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: white;
+    margin: 0 !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header {
+    background-color: black;
+    color: whitesmoke;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+.navs {
+    background-color: black;
+    overflow: hidden;
+}
+
+.navs>a,
+.navs>div {
+    float: left;
+    display: flex;
+    height: 52px;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.topnav>a:hover {
+    transition: 50ms ease-in-out;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.topnav>a.active {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.topnav>a:first-child {
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+.botnav a {
+    height: 52px;
+    filter: contrast(0);
+    align-items: center;
+}
+
+.botnav a:hover {
+    filter: none;
+}
+
+.footer {
+    background-color: black;
+    bottom: 0;
+    color: whitesmoke;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+main {
+    margin-top: 52px;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+main p {
+    font-size: 20px;
+}
+
+main.recursos {
+    text-align: left;
+}
+
+.content {
+    margin-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content div {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.content>a {
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.cardLink {
+    padding: 1vw;
+    height: auto;
+    width: 75vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.cardLink:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .4);
+    transition: 50ms ease-in-out;
+    background-color: whitesmoke;
+    color: black;
+}
