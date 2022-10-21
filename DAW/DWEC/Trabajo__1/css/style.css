@@ -183,3 +183,10 @@ td {
     text-align: left;
     padding: 8px;
 }
+
+q {
+    display: block;
+    font-size: 15px;
+    font-style: italic;
+    padding: 1rem;
+}
