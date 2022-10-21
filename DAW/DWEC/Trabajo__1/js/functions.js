@@ -1,94 +1,36 @@
-function objetoNavigator(){
-    let modal = document.getElementById("navigatorModal");
-    let btn = document.getElementById("navigator");
-    let close = document.getElementsByClassName("close")[0];
-    modal.style.display = "block";
+function checkConnection() {
+    let check = document.getElementById("connection");
     
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-function objetoScreen(){
-    let modal = document.getElementById("screenModal");
-    let btn = document.getElementById("screen");
-    let close = document.getElementsByClassName("close")[1];
-    modal.style.display = "block";
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+    if (navigator.onLine) {
+        check.innerHTML = "Conectado";
+        check.style.color = "green";
+    } else {
+        check.innerHTML = "Desconectado";
+        check.style.color = "red";
     }
 }
 
-function objetoWindow(){
-    let modal = document.getElementById("windowModal");
-    let btn = document.getElementById("window");
-    let close = document.getElementsByClassName("close")[2];
-    modal.style.display = "block";
+function getResolution() {
+    let resolution = document.getElementById("resolution");
 
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    if (screen.width >= 1920) resolution.innerHTML = "4K" + " (" + screen.width + "x" + screen.height + ")";
+    else if (screen.width >= 1280) resolution.innerHTML = "Full HD" + " (" + screen.width + "x" + screen.height + ")";
+    else if (screen.width >= 720) resolution.innerHTML = "HD" + " (" + screen.width + "x" + screen.height + ")";
+    else resolution.innerHTML = "SD" + " (" + screen.width + "x" + screen.height + ")";
 }
 
-function objetoHistory(){
-    let modal = document.getElementById("historyModal");
-    let btn = document.getElementById("history");
-    let close = document.getElementsByClassName("close")[3];
-    modal.style.display = "block";
-    
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+function openWindow() {
+    window.open("https://www.google.com", "Google", "width=500,height=500");
 }
 
-function objetoDocument(){
-    let modal = document.getElementById("documentModal");
-    let btn = document.getElementById("document");
-    let close = document.getElementsByClassName("close")[4];
-    modal.style.display = "block";
-    
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+function closeWindow() {
+    window.close();
 }
 
-function objetoLocation(){
-    let modal = document.getElementById("locationModal");
-    let btn = document.getElementById("location");
-    let close = document.getElementsByClassName("close")[5];
-    modal.style.display = "block";
-    
-    close.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+function holamundo() {
+    document.getElementById("holamundo").innerHTML = "Hola Mundo";
+}
+
+function locationEjemplo() {
+    document.getElementById("locationEjemplo").innerHTML = "La URL de la página es: " + location.href;    
 }

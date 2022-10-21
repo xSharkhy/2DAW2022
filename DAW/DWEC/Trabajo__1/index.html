@@ -10,14 +10,8 @@
 </head>
 
 <body>
-
-</body>
-
-</html>
-
-<body>
     <header class="container header">
-        <h2 id="headerh2">Ismael Morejón Blasco</h2>
+        <h2 id="headerh2">Ismael Morejón && Javier Martínez</h2>
         <nav class="topnav navs">
             <a href="https://www.youtube.com/watch?v=TRxJamt8Rmw"><img src="imatges/luffy.jpg" alt="Luffy"
                     height="52px"></a>
@@ -132,6 +126,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="checkConnection();">¿Estás conectado?</button>
+                    <p id="connection" style="font-weight: bolder;"></p>
                 </div>
             </div>
             <a onclick="objetoScreen()" id="screen">
@@ -142,10 +140,11 @@
             <div id="screenModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>El objeto JavaScript screen contiene información de la pantalla del navegador. Se puede utilizar para mostrar el ancho
-                    de la pantalla, la altura, colorDepth, pixelDepth, etc.
-                    
-                    El objeto navigator es objeto de la clase Window, por lo que se puede acceder por:</p>
+                    <p>El objeto JavaScript screen contiene información de la pantalla del navegador. Se puede utilizar para mostrar
+                        el ancho
+                        de la pantalla, la altura, colorDepth, pixelDepth, etc.
+            
+                        El objeto navigator es objeto de la clase Window, por lo que se puede acceder por:</p>
                     <code>window.screen</code>
                     <hr>
                     <h4>Propiedades</h4>
@@ -188,6 +187,10 @@
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="getResolution();">¿Qué resolución tienes?</button>
+                    <p id="resolution" style="font-weight: bolder;"></p>
                 </div>
             </div>
             <a onclick="objetoWindow()" id="window">
@@ -198,11 +201,13 @@
             <div id="windowModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>El objeto ventana representa una ventana en el navegador. Un objeto de ventana es creado automáticamente por el
-                    navegador.
-                    
-                    Window es el objeto del navegador, no es el objeto de javascript. Los objetos de javascript son string, array, date,
-                    etc.</p>
+                    <p>El objeto ventana representa una ventana en el navegador. Un objeto de ventana es creado automáticamente por
+                        el
+                        navegador.
+            
+                        Window es el objeto del navegador, no es el objeto de javascript. Los objetos de javascript son string,
+                        array, date,
+                        etc.</p>
                     <hr>
                     <h4>Métodos</h4>
                     <table>
@@ -221,22 +226,27 @@
                             </tr>
                             <tr>
                                 <td>prompt()</td>
-                                <td>displays a dialog box to get input from the user.</td>
+                                <td>muestra una ventana de diálogo para obtener datos del usuario.</td>
                             </tr>
                             <tr>
                                 <td>open()</td>
-                                <td>opens the new window.</td>
+                                <td>abre una nueva ventana.</td>
                             </tr>
                             <tr>
                                 <td>close()</td>
-                                <td>closes the current window.</td>
+                                <td>cierra la ventana actual.</td>
                             </tr>
                             <tr>
                                 <td>setTimeout()</td>
-                                <td>performs action after specified time like calling function, evaluating expressions etc.</td>
+                                <td>reaaliza una acción tras un determinado tiempo a la hora de llamar funciones, evaluar
+                                    expresiones, etc.</td>
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="openWindow();">Abrir ventana</button>
+                    <button type="button" onclick="closeWindow();">Cerrar ventana</button>
                 </div>
             </div>
             <a onclick="objetoHistory()" id="history">
@@ -247,9 +257,10 @@
             <div id="historyModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>El objeto historial de JavaScript representa una matriz de URLs visitadas por el usuario. Utilizando este objeto, se
+                    <p>El objeto historial de JavaScript representa una matriz de URLs visitadas por el usuario. Utilizando este
+                        objeto, se
                         puede cargar la página anterior, la anterior o cualquier página en particular.
-                    
+            
                         Historial es objeto de la clase Window, por lo que se puede acceder a él por:</p>
                     <code>window.history</code>
                     <hr>
@@ -257,12 +268,12 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th>Property</th>
-                                <th>Description</th>
+                                <th>Propiedad</th>
+                                <th>Descripción</th>
                             </tr>
                             <tr>
                                 <td>length</td>
-                                <td>returns the number of URLs in the history list.</td>
+                                <td>devuelve la cantidad de urls en el historial.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -271,23 +282,26 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th>Method</th>
-                                <th>Description</th>
+                                <th>Método</th>
+                                <th>Descripción</th>
                             </tr>
                             <tr>
                                 <td>back()</td>
-                                <td>loads the previous URL in the history list.</td>
+                                <td>carga la url previa en el historial.</td>
                             </tr>
                             <tr>
                                 <td>forward()</td>
-                                <td>loads the next URL in the history list.</td>
+                                <td>carga la siguiente url en el historial.</td>
                             </tr>
                             <tr>
                                 <td>go()</td>
-                                <td>loads a specific URL from the history list.</td>
+                                <td>carga una url específica del historial.</td>
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="history.back();">¿Estás enganchado al PC?</button>
                 </div>
             </div>
             <a onclick="objetoDocument()" id="document">
@@ -299,49 +313,56 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>El objeto documento representa todo el documento html.
-                    
-                    Cuando el documento html se carga en el navegador, se convierte en un objeto documento. Es el elemento raíz que
-                    representa el documento html. Tiene propiedades y métodos. Con la ayuda del objeto documento, podemos añadir contenido
-                    dinámico a nuestra página web.
-                    
-                    Como se mencionó anteriormente, es objeto de la clase Window. Así que esta es la forma de llamarlo:</p>
+            
+                        Cuando el documento html se carga en el navegador, se convierte en un objeto documento. Es el elemento raíz
+                        que
+                        representa el documento html. Tiene propiedades y métodos. Con la ayuda del objeto documento, podemos añadir
+                        contenido
+                        dinámico a nuestra página web.
+            
+                        Como se mencionó anteriormente, es objeto de la clase Window. Así que esta es la forma de llamarlo:</p>
                     <code>window.document</code><br>
-                    <q>According to W3C - "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows
+                    <q>According to W3C - "The W3C Document Object Model (DOM) is a platform and language-neutral interface that
+                        allows
                         programs and scripts to dynamically access and update the content, structure, and style of a document."</q>
                     <hr>
                     <h4>Métodos</h4>
                     <table>
                         <tbody>
                             <tr>
-                                <th>Method</th>
-                                <th>Description</th>
+                                <th>Método</th>
+                                <th>Descripción</th>
                             </tr>
                             <tr>
                                 <td>write("string")</td>
-                                <td>writes the given string on the doucment.</td>
+                                <td>escribe el string dado en el documento.</td>
                             </tr>
                             <tr>
                                 <td>writeln("string")</td>
-                                <td>writes the given string on the doucment with newline character at the end.</td>
+                                <td>escribe el string dado en el documento con un salto de línea al final.</td>
                             </tr>
                             <tr>
                                 <td>getElementById()</td>
-                                <td>returns the element having the given id value.</td>
+                                <td>devuelve el elemento asociado a la id proporcionada.</td>
                             </tr>
                             <tr>
                                 <td>getElementsByName()</td>
-                                <td>returns all the elements having the given name value.</td>
+                                <td>devuelve el elemento asociado al nombre proporcionada.</td>
                             </tr>
                             <tr>
                                 <td>getElementsByTagName()</td>
-                                <td>returns all the elements having the given tag name.</td>
+                                <td>devuelve el elemento asociado a la etiqueta proporcionada.</td>
                             </tr>
                             <tr>
                                 <td>getElementsByClassName()</td>
-                                <td>returns all the elements having the given class name.</td>
+                                <td>devuelve el elemento asociado a la clase proporcionada.</td>
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="holamundo();">Escribe en el documento</button>
+                    <p id="holamundo"></p>
                 </div>
             </div>
             <a onclick="objetoLocation()" id="location">
@@ -352,50 +373,51 @@
             <div id="locationModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>El objeto Location representa la URL de la página actual. Con la ayuda de este objeto, podemos obtener la URL actual,
-                    redirigir a otra URL, obtener la URL anterior, obtener la URL anterior, etc.
-
-                    El objeto Location es un objeto de la clase Window. Así que se puede acceder a él por:</p>
+                    <p>El objeto Location representa la URL de la página actual. Con la ayuda de este objeto, podemos obtener la URL
+                        actual,
+                        redirigir a otra URL, obtener la URL anterior, obtener la URL anterior, etc.
+            
+                        El objeto Location es un objeto de la clase Window. Así que se puede acceder a él por:</p>
                     <code>window.location</code>
                     <hr>
                     <h4>Propiedades</h4>
                     <table>
                         <tbody>
                             <tr>
-                                <th>Property</th>
-                                <th>Description</th>
+                                <th>Propiedad</th>
+                                <th>Descripción</th>
                             </tr>
                             <tr>
                                 <td>href</td>
-                                <td>returns the URL of the current page.</td>
+                                <td>devuelve la url de la página actual.</td>
                             </tr>
                             <tr>
                                 <td>protocol</td>
-                                <td>returns the web protocol used (http: or https:).</td>
+                                <td>devuelve el protocolo web utilizado en la página (http: or https:).</td>
                             </tr>
                             <tr>
                                 <td>host</td>
-                                <td>returns the web host (hostname:port).</td>
+                                <td>devuelve el host de la web (hostname:port).</td>
                             </tr>
                             <tr>
                                 <td>hostname</td>
-                                <td>returns the web hostname.</td>
+                                <td>devuelve el nombre del host de la web.</td>
                             </tr>
                             <tr>
                                 <td>port</td>
-                                <td>returns the web port (80 or 443).</td>
+                                <td>devuelve el puerto de la web (80 or 443).</td>
                             </tr>
                             <tr>
                                 <td>pathname</td>
-                                <td>returns the path and filename of the current page.</td>
+                                <td>devuelve el 'path' y el nombre del archivo de la web actual.</td>
                             </tr>
                             <tr>
                                 <td>search</td>
-                                <td>returns the query string of the current page.</td>
+                                <td>devuelve la posición de la palabra solicitada en la web.</td>
                             </tr>
                             <tr>
                                 <td>hash</td>
-                                <td>returns the anchor name (portion of the URL after #).</td>
+                                <td>devuelve una parte de la url (parte de la url tras el #).</td>
                             </tr>
                         </tbody>
                     </table>
@@ -404,28 +426,32 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th>Method</th>
-                                <th>Description</th>
+                                <th>Método</th>
+                                <th>Descripción</th>
                             </tr>
                             <tr>
                                 <td>assign()</td>
-                                <td>loads a new document.</td>
+                                <td>carga un nuevo documento.</td>
                             </tr>
                             <tr>
                                 <td>reload()</td>
-                                <td>reloads the current document.</td>
+                                <td>recarga el documento actual.</td>
                             </tr>
                             <tr>
                                 <td>replace()</td>
-                                <td>replaces the current document with a new one.</td>
+                                <td>reemplaza el documento actual con uno nuevo.</td>
                             </tr>
                         </tbody>
                     </table>
+                    <hr>
+                    <h4>Ejemplo</h4>
+                    <button type="button" onclick="locationEjemplo()">Obtener URL</button>
+                    <p id="locationEjemplo" style="font-size: 10px;"></p>
                 </div>
             </div>
             
-        </section>
-    </main>
+            </section>
+            </main>
     <footer class="container footer">
         <nav class="botnav navs">
             <a href="https://github.com/xSharkhy"><img src="imatges/git.svg" alt="GIT Icon" height="36px"></a>
@@ -435,6 +461,7 @@
                     height="36px"></a>
         </nav>
     </footer>
+    <script src="js/main.js"></script>
     <script src="js/functions.js"></script>
 </body>
 
