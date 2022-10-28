@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: whitesmoke;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.col {
+    background-color: lightgray;
+}
+
+.row {
+    background-color: lightblue;
+    text-align: justify;
+}
+
+tr:nth-child(even) {
+    background-color: lightyellow;
+}
+
+tr:not(first-child):hover {
+    background-color: yellow;
+}
+
+.row1::before {
+    content: url(media/euro.png);
+}
+
+.row2::before {
+    content: url(media/dolar.png);
+}
+
+.row3::before {
+    content: url(media/libra.png);
+}
+
+.row4::before {
+    content: url(media/yen.png);
+}

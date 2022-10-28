@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function ejercicio1() {
+            document.getElementById("ejercicio1").innerHTML = location.href + "<br>" + location.protocol + "<br>" + location.hostname + "<br>";
+        }
+
+        function ejercicio2() {
+            confirm("¿Estás vivo?");
+        }
+
+        async function ejercicio3() {
+            if(navigator.cookieEnabled) {
+                document.getElementById("ejercicio3").innerHTML = "Cookies habilitadas";
+                await new Promise(r => setTimeout(r, 2000));
+                location.replace("https://aules.edu.gva.es/fp/my/");
+            } else {
+                document.getElementById("ejercicio3").innerHTML = "Cookies deshabilitadas";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="ejercicio1()">Ejercicio: 1</button>
+    <p id="ejercicio1"></p>
+    <button onclick="ejercicio2()">Ejercicio: 2</button>
+    <p id="ejercicio2"></p>
+    <button onclick="ejercicio3()">Ejercicio: 3</button>
+    <p id="ejercicio3"></p>
+</body>
+</html>
