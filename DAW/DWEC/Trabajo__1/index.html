@@ -1,468 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ismael Morejón</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismael Morejón</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+	<body>
+		<header class="container header">
+			<h2 id="headerh2">Ismael Morejón && Javier Martínez</h2>
+			<nav class="topnav navs">
+				<a href="https://www.youtube.com/watch?v=TRxJamt8Rmw"
+					><img src="imatges/luffy.jpg" alt="Luffy" height="52px"
+				/></a>
+				<a href="#" class="active">Inicio</a>
+			</nav>
+		</header>
 
-<body>
-    <header class="container header">
-        <h2 id="headerh2">Ismael Morejón && Javier Martínez</h2>
-        <nav class="topnav navs">
-            <a href="https://www.youtube.com/watch?v=TRxJamt8Rmw"><img src="imatges/luffy.jpg" alt="Luffy"
-                    height="52px"></a>
-            <a href="#" class="active">Inicio</a>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="content">
-            <a onclick="objetoNavigator()" id="navigator">
-                <div class="cardLink">
-                    <h4>Navigator</h4>
-                </div>
-            </a>
-            <div id="navigatorModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto JavaScript navigator se utiliza para la detección del navegador. Se puede utilizar para obtener información
-                    del navegador como appName, appCodeName, userAgent, etc.
-                    
-                    El objeto navigator es objeto de la clase Window, por lo que se puede acceder por:</p>
-                    <code>window.navigator</code>
-                    <hr>
-                    <h4>Propiedades</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>No.</th>
-                                <th>Propiedad</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>appName</td>
-                                <td>devuelve el nombre</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>appVersion</td>
-                                <td>devuelve la versión</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>appCodeName</td>
-                                <td>devuelve el nombre en código</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>cookieEnabled</td>
-                                <td>devuelve true si las cookies están activas</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>userAgent</td>
-                                <td>devuelve el user agent</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>language</td>
-                                <td>devuelve el lenguaje. Sólo soportado en Netscape y Firefox.</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>userLanguage</td>
-                                <td>devuelve el lenguaje usuario. Sólo sopoprtado en IE</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>plugins</td>
-                                <td>devuelve los plugins. Sólo soportado en Netscape y Firefox.</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>systemLanguage</td>
-                                <td>rdevuelve el lenguaje del sistema. Sólo soportado en IE.</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>mimeTypes[ ]</td>
-                                <td>devuelve un array de mime. Sólo soportado en Netscape y Firefox.</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>platform</td>
-                                <td>devuelve la plataforma.</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>online</td>
-                                <td>devuelve true si el navegador está conectado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Métodos</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>No.</th>
-                                <th>Método</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>javaEnabled()</td>
-                                <td>comprueba si java está habilitado.</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>taintEnabled()</td>
-                                <td>comprueba si taint está habilitado. Obsoleto desde JavaScript 1.2.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="checkConnection();">¿Estás conectado?</button>
-                    <p id="connection" style="font-weight: bolder;"></p>
-                </div>
-            </div>
-            <a onclick="objetoScreen()" id="screen">
-                <div class="cardLink">
-                    <h4>Screen</h4>
-                </div>
-            </a>
-            <div id="screenModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto JavaScript screen contiene información de la pantalla del navegador. Se puede utilizar para mostrar
-                        el ancho
-                        de la pantalla, la altura, colorDepth, pixelDepth, etc.
-            
-                        El objeto navigator es objeto de la clase Window, por lo que se puede acceder por:</p>
-                    <code>window.screen</code>
-                    <hr>
-                    <h4>Propiedades</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>No.</th>
-                                <th>Propiedad</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>width</td>
-                                <td>devuelve el ancho de la pantalla</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>height</td>
-                                <td>devuelve el alto de la pantalla</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>availWidth</td>
-                                <td>devuelve el ancho disponible</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>availHeight</td>
-                                <td>devuelve el alto disponible</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>colorDepth</td>
-                                <td>devuelve la profundidad de color</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>pixelDepth</td>
-                                <td>devuelve la profundidad de píxel</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="getResolution();">¿Qué resolución tienes?</button>
-                    <p id="resolution" style="font-weight: bolder;"></p>
-                </div>
-            </div>
-            <a onclick="objetoWindow()" id="window">
-                <div class="cardLink">
-                    <h4>Window</h4>
-                </div>
-            </a>
-            <div id="windowModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto ventana representa una ventana en el navegador. Un objeto de ventana es creado automáticamente por
-                        el
-                        navegador.
-            
-                        Window es el objeto del navegador, no es el objeto de javascript. Los objetos de javascript son string,
-                        array, date,
-                        etc.</p>
-                    <hr>
-                    <h4>Métodos</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Método</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>alert()</td>
-                                <td>muestra una ventana de alerta con un botón de OK</td>
-                            </tr>
-                            <tr>
-                                <td>confirm()</td>
-                                <td>muestra una ventana de confirmación con botones de OK y cancelar</td>
-                            </tr>
-                            <tr>
-                                <td>prompt()</td>
-                                <td>muestra una ventana de diálogo para obtener datos del usuario.</td>
-                            </tr>
-                            <tr>
-                                <td>open()</td>
-                                <td>abre una nueva ventana.</td>
-                            </tr>
-                            <tr>
-                                <td>close()</td>
-                                <td>cierra la ventana actual.</td>
-                            </tr>
-                            <tr>
-                                <td>setTimeout()</td>
-                                <td>reaaliza una acción tras un determinado tiempo a la hora de llamar funciones, evaluar
-                                    expresiones, etc.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="openWindow();">Abrir ventana</button>
-                    <button type="button" onclick="closeWindow();">Cerrar ventana</button>
-                </div>
-            </div>
-            <a onclick="objetoHistory()" id="history">
-                <div class="cardLink">
-                    <h4>History</h4>
-                </div>
-            </a>
-            <div id="historyModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto historial de JavaScript representa una matriz de URLs visitadas por el usuario. Utilizando este
-                        objeto, se
-                        puede cargar la página anterior, la anterior o cualquier página en particular.
-            
-                        Historial es objeto de la clase Window, por lo que se puede acceder a él por:</p>
-                    <code>window.history</code>
-                    <hr>
-                    <h4>Propiedades</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Propiedad</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>length</td>
-                                <td>devuelve la cantidad de urls en el historial.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Métodos</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Método</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>back()</td>
-                                <td>carga la url previa en el historial.</td>
-                            </tr>
-                            <tr>
-                                <td>forward()</td>
-                                <td>carga la siguiente url en el historial.</td>
-                            </tr>
-                            <tr>
-                                <td>go()</td>
-                                <td>carga una url específica del historial.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="history.back();">¿Estás enganchado al PC?</button>
-                </div>
-            </div>
-            <a onclick="objetoDocument()" id="document">
-                <div class="cardLink">
-                    <h4>Document</h4>
-                </div>
-            </a>
-            <div id="documentModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto documento representa todo el documento html.
-            
-                        Cuando el documento html se carga en el navegador, se convierte en un objeto documento. Es el elemento raíz
-                        que
-                        representa el documento html. Tiene propiedades y métodos. Con la ayuda del objeto documento, podemos añadir
-                        contenido
-                        dinámico a nuestra página web.
-            
-                        Como se mencionó anteriormente, es objeto de la clase Window. Así que esta es la forma de llamarlo:</p>
-                    <code>window.document</code><br>
-                    <q>According to W3C - "The W3C Document Object Model (DOM) is a platform and language-neutral interface that
-                        allows
-                        programs and scripts to dynamically access and update the content, structure, and style of a document."</q>
-                    <hr>
-                    <h4>Métodos</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Método</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>write("string")</td>
-                                <td>escribe el string dado en el documento.</td>
-                            </tr>
-                            <tr>
-                                <td>writeln("string")</td>
-                                <td>escribe el string dado en el documento con un salto de línea al final.</td>
-                            </tr>
-                            <tr>
-                                <td>getElementById()</td>
-                                <td>devuelve el elemento asociado a la id proporcionada.</td>
-                            </tr>
-                            <tr>
-                                <td>getElementsByName()</td>
-                                <td>devuelve el elemento asociado al nombre proporcionada.</td>
-                            </tr>
-                            <tr>
-                                <td>getElementsByTagName()</td>
-                                <td>devuelve el elemento asociado a la etiqueta proporcionada.</td>
-                            </tr>
-                            <tr>
-                                <td>getElementsByClassName()</td>
-                                <td>devuelve el elemento asociado a la clase proporcionada.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="holamundo();">Escribe en el documento</button>
-                    <p id="holamundo"></p>
-                </div>
-            </div>
-            <a onclick="objetoLocation()" id="location">
-                <div class="cardLink">
-                    <h4>Location</h4>
-                </div>
-            </a>
-            <div id="locationModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>El objeto Location representa la URL de la página actual. Con la ayuda de este objeto, podemos obtener la URL
-                        actual,
-                        redirigir a otra URL, obtener la URL anterior, obtener la URL anterior, etc.
-            
-                        El objeto Location es un objeto de la clase Window. Así que se puede acceder a él por:</p>
-                    <code>window.location</code>
-                    <hr>
-                    <h4>Propiedades</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Propiedad</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>href</td>
-                                <td>devuelve la url de la página actual.</td>
-                            </tr>
-                            <tr>
-                                <td>protocol</td>
-                                <td>devuelve el protocolo web utilizado en la página (http: or https:).</td>
-                            </tr>
-                            <tr>
-                                <td>host</td>
-                                <td>devuelve el host de la web (hostname:port).</td>
-                            </tr>
-                            <tr>
-                                <td>hostname</td>
-                                <td>devuelve el nombre del host de la web.</td>
-                            </tr>
-                            <tr>
-                                <td>port</td>
-                                <td>devuelve el puerto de la web (80 or 443).</td>
-                            </tr>
-                            <tr>
-                                <td>pathname</td>
-                                <td>devuelve el 'path' y el nombre del archivo de la web actual.</td>
-                            </tr>
-                            <tr>
-                                <td>search</td>
-                                <td>devuelve la posición de la palabra solicitada en la web.</td>
-                            </tr>
-                            <tr>
-                                <td>hash</td>
-                                <td>devuelve una parte de la url (parte de la url tras el #).</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Métodos</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Método</th>
-                                <th>Descripción</th>
-                            </tr>
-                            <tr>
-                                <td>assign()</td>
-                                <td>carga un nuevo documento.</td>
-                            </tr>
-                            <tr>
-                                <td>reload()</td>
-                                <td>recarga el documento actual.</td>
-                            </tr>
-                            <tr>
-                                <td>replace()</td>
-                                <td>reemplaza el documento actual con uno nuevo.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <h4>Ejemplo</h4>
-                    <button type="button" onclick="locationEjemplo()">Obtener URL</button>
-                    <p id="locationEjemplo" style="font-size: 10px;"></p>
-                </div>
-            </div>
-            
-            </section>
-            </main>
-    <footer class="container footer">
-        <nav class="botnav navs">
-            <a href="https://github.com/xSharkhy"><img src="imatges/git.svg" alt="GIT Icon" height="36px"></a>
-            <a href="https://twitter.com/Sharkhy_"><img src="imatges/twitter.svg" alt="Twitter Icon" height="36px"></a>
-            <a href="https://twitch.tv/Sharkho_"><img src="imatges/twitch.svg" alt="Twitch Icon" height="36px"></a>
-            <a href="https://instagram.com/Sharkhy_"><img src="imatges/instagram.svg" alt="Instagram Icon"
-                    height="36px"></a>
-        </nav>
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/functions.js"></script>
-</body>
-
+		<main>
+			<section class="content">
+				<a onclick="objetoNavigator()" id="navigator">
+					<div class="cardLink">
+						<h4>Navigator</h4>
+					</div>
+				</a>
+				<div id="navigatorModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto JavaScript navigator se utiliza para la
+							detección del navegador. Se puede utilizar para
+							obtener información del navegador como appName,
+							appCodeName, userAgent, etc. El objeto navigator es
+							objeto de la clase Window, por lo que se puede
+							acceder por:
+						</p>
+						<code>window.navigator</code>
+						<hr />
+						<h4>Propiedades</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>No.</th>
+									<th>Propiedad</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>appName</td>
+									<td>devuelve el nombre</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>appVersion</td>
+									<td>devuelve la versión</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>appCodeName</td>
+									<td>devuelve el nombre en código</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>cookieEnabled</td>
+									<td>
+										devuelve true si las cookies están
+										activas
+									</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>userAgent</td>
+									<td>devuelve el user agent</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>language</td>
+									<td>
+										devuelve el lenguaje. Sólo soportado en
+										Netscape y Firefox.
+									</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>userLanguage</td>
+									<td>
+										devuelve el lenguaje usuario. Sólo
+										sopoprtado en IE
+									</td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td>plugins</td>
+									<td>
+										devuelve los plugins. Sólo soportado en
+										Netscape y Firefox.
+									</td>
+								</tr>
+								<tr>
+									<td>9</td>
+									<td>systemLanguage</td>
+									<td>
+										rdevuelve el lenguaje del sistema. Sólo
+										soportado en IE.
+									</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td>mimeTypes[ ]</td>
+									<td>
+										devuelve un array de mime. Sólo
+										soportado en Netscape y Firefox.
+									</td>
+								</tr>
+								<tr>
+									<td>11</td>
+									<td>platform</td>
+									<td>devuelve la plataforma.</td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>online</td>
+									<td>
+										devuelve true si el navegador está
+										conectado
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Métodos</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>No.</th>
+									<th>Método</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>javaEnabled()</td>
+									<td>comprueba si java está habilitado.</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>taintEnabled()</td>
+									<td>
+										comprueba si taint está habilitado.
+										Obsoleto desde JavaScript 1.2.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="checkConnection();">
+							¿Estás conectado?
+						</button>
+						<p id="connection" style="font-weight: bolder"></p>
+					</div>
+				</div>
+				<a onclick="objetoScreen()" id="screen">
+					<div class="cardLink">
+						<h4>Screen</h4>
+					</div>
+				</a>
+				<div id="screenModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto JavaScript screen contiene información de
+							la pantalla del navegador. Se puede utilizar para
+							mostrar el ancho de la pantalla, la altura,
+							colorDepth, pixelDepth, etc. El objeto navigator es
+							objeto de la clase Window, por lo que se puede
+							acceder por:
+						</p>
+						<code>window.screen</code>
+						<hr />
+						<h4>Propiedades</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>No.</th>
+									<th>Propiedad</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>width</td>
+									<td>devuelve el ancho de la pantalla</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>height</td>
+									<td>devuelve el alto de la pantalla</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>availWidth</td>
+									<td>devuelve el ancho disponible</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>availHeight</td>
+									<td>devuelve el alto disponible</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>colorDepth</td>
+									<td>devuelve la profundidad de color</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>pixelDepth</td>
+									<td>devuelve la profundidad de píxel</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="getResolution();">
+							¿Qué resolución tienes?
+						</button>
+						<p id="resolution" style="font-weight: bolder"></p>
+					</div>
+				</div>
+				<a onclick="objetoWindow()" id="window">
+					<div class="cardLink">
+						<h4>Window</h4>
+					</div>
+				</a>
+				<div id="windowModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto ventana representa una ventana en el
+							navegador. Un objeto de ventana es creado
+							automáticamente por el navegador. Window es el
+							objeto del navegador, no es el objeto de javascript.
+							Los objetos de javascript son string, array, date,
+							etc.
+						</p>
+						<hr />
+						<h4>Métodos</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Método</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>alert()</td>
+									<td>
+										muestra una ventana de alerta con un
+										botón de OK
+									</td>
+								</tr>
+								<tr>
+									<td>confirm()</td>
+									<td>
+										muestra una ventana de confirmación con
+										botones de OK y cancelar
+									</td>
+								</tr>
+								<tr>
+									<td>prompt()</td>
+									<td>
+										muestra una ventana de diálogo para
+										obtener datos del usuario.
+									</td>
+								</tr>
+								<tr>
+									<td>open()</td>
+									<td>abre una nueva ventana.</td>
+								</tr>
+								<tr>
+									<td>close()</td>
+									<td>cierra la ventana actual.</td>
+								</tr>
+								<tr>
+									<td>setTimeout()</td>
+									<td>
+										reaaliza una acción tras un determinado
+										tiempo a la hora de llamar funciones,
+										evaluar expresiones, etc.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="openWindow();">
+							Abrir ventana
+						</button>
+						<button type="button" onclick="closeWindow();">
+							Cerrar ventana
+						</button>
+					</div>
+				</div>
+				<a onclick="objetoHistory()" id="history">
+					<div class="cardLink">
+						<h4>History</h4>
+					</div>
+				</a>
+				<div id="historyModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto historial de JavaScript representa una
+							matriz de URLs visitadas por el usuario. Utilizando
+							este objeto, se puede cargar la página anterior, la
+							anterior o cualquier página en particular. Historial
+							es objeto de la clase Window, por lo que se puede
+							acceder a él por:
+						</p>
+						<code>window.history</code>
+						<hr />
+						<h4>Propiedades</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Propiedad</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>length</td>
+									<td>
+										devuelve la cantidad de urls en el
+										historial.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Métodos</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Método</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>back()</td>
+									<td>
+										carga la url previa en el historial.
+									</td>
+								</tr>
+								<tr>
+									<td>forward()</td>
+									<td>
+										carga la siguiente url en el historial.
+									</td>
+								</tr>
+								<tr>
+									<td>go()</td>
+									<td>
+										carga una url específica del historial.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="history.back();">
+							¿Estás enganchado al PC?
+						</button>
+					</div>
+				</div>
+				<a onclick="objetoDocument()" id="document">
+					<div class="cardLink">
+						<h4>Document</h4>
+					</div>
+				</a>
+				<div id="documentModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto documento representa todo el documento
+							html. Cuando el documento html se carga en el
+							navegador, se convierte en un objeto documento. Es
+							el elemento raíz que representa el documento html.
+							Tiene propiedades y métodos. Con la ayuda del objeto
+							documento, podemos añadir contenido dinámico a
+							nuestra página web. Como se mencionó anteriormente,
+							es objeto de la clase Window. Así que esta es la
+							forma de llamarlo:
+						</p>
+						<code>window.document</code><br />
+						<q
+							>According to W3C - "The W3C Document Object Model
+							(DOM) is a platform and language-neutral interface
+							that allows programs and scripts to dynamically
+							access and update the content, structure, and style
+							of a document."</q
+						>
+						<hr />
+						<h4>Métodos</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Método</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>write("string")</td>
+									<td>
+										escribe el string dado en el documento.
+									</td>
+								</tr>
+								<tr>
+									<td>writeln("string")</td>
+									<td>
+										escribe el string dado en el documento
+										con un salto de línea al final.
+									</td>
+								</tr>
+								<tr>
+									<td>getElementById()</td>
+									<td>
+										devuelve el elemento asociado a la id
+										proporcionada.
+									</td>
+								</tr>
+								<tr>
+									<td>getElementsByName()</td>
+									<td>
+										devuelve el elemento asociado al nombre
+										proporcionada.
+									</td>
+								</tr>
+								<tr>
+									<td>getElementsByTagName()</td>
+									<td>
+										devuelve el elemento asociado a la
+										etiqueta proporcionada.
+									</td>
+								</tr>
+								<tr>
+									<td>getElementsByClassName()</td>
+									<td>
+										devuelve el elemento asociado a la clase
+										proporcionada.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="holamundo();">
+							Escribe en el documento
+						</button>
+						<p id="holamundo"></p>
+					</div>
+				</div>
+				<a onclick="objetoLocation()" id="location">
+					<div class="cardLink">
+						<h4>Location</h4>
+					</div>
+				</a>
+				<div id="locationModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>
+							El objeto Location representa la URL de la página
+							actual. Con la ayuda de este objeto, podemos obtener
+							la URL actual, redirigir a otra URL, obtener la URL
+							anterior, obtener la URL anterior, etc. El objeto
+							Location es un objeto de la clase Window. Así que se
+							puede acceder a él por:
+						</p>
+						<code>window.location</code>
+						<hr />
+						<h4>Propiedades</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Propiedad</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>href</td>
+									<td>
+										devuelve la url de la página actual.
+									</td>
+								</tr>
+								<tr>
+									<td>protocol</td>
+									<td>
+										devuelve el protocolo web utilizado en
+										la página (http: or https:).
+									</td>
+								</tr>
+								<tr>
+									<td>host</td>
+									<td>
+										devuelve el host de la web
+										(hostname:port).
+									</td>
+								</tr>
+								<tr>
+									<td>hostname</td>
+									<td>
+										devuelve el nombre del host de la web.
+									</td>
+								</tr>
+								<tr>
+									<td>port</td>
+									<td>
+										devuelve el puerto de la web (80 or
+										443).
+									</td>
+								</tr>
+								<tr>
+									<td>pathname</td>
+									<td>
+										devuelve el 'path' y el nombre del
+										archivo de la web actual.
+									</td>
+								</tr>
+								<tr>
+									<td>search</td>
+									<td>
+										devuelve la posición de la palabra
+										solicitada en la web.
+									</td>
+								</tr>
+								<tr>
+									<td>hash</td>
+									<td>
+										devuelve una parte de la url (parte de
+										la url tras el #).
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Métodos</h4>
+						<table>
+							<tbody>
+								<tr>
+									<th>Método</th>
+									<th>Descripción</th>
+								</tr>
+								<tr>
+									<td>assign()</td>
+									<td>carga un nuevo documento.</td>
+								</tr>
+								<tr>
+									<td>reload()</td>
+									<td>recarga el documento actual.</td>
+								</tr>
+								<tr>
+									<td>replace()</td>
+									<td>
+										reemplaza el documento actual con uno
+										nuevo.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr />
+						<h4>Ejemplo</h4>
+						<button type="button" onclick="locationEjemplo()">
+							Obtener URL
+						</button>
+						<p id="locationEjemplo" style="font-size: 10px"></p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="container footer">
+			<nav class="botnav navs">
+				<a href="https://github.com/xSharkhy"
+					><img src="imatges/git.svg" alt="GIT Icon" height="36px"
+				/></a>
+				<a href="https://twitter.com/Sharkhy_"
+					><img
+						src="imatges/twitter.svg"
+						alt="Twitter Icon"
+						height="36px"
+				/></a>
+				<a href="https://twitch.tv/Sharkho_"
+					><img
+						src="imatges/twitch.svg"
+						alt="Twitch Icon"
+						height="36px"
+				/></a>
+				<a href="https://instagram.com/Sharkhy_"
+					><img
+						src="imatges/instagram.svg"
+						alt="Instagram Icon"
+						height="36px"
+				/></a>
+			</nav>
+		</footer>
+		<script src="js/main.js"></script>
+		<script src="js/functions.js"></script>
+	</body>
 </html>

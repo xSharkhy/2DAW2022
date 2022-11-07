@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ismael Morejón</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="shortcut icon"
+			href="imatges/luffy.jpg"
+			type="image/x-icon"
+		/>
+	</head>
+
+	<body>
+		<header class="container header">
+			<h2 id="headerh2">Modelos de Arquitecturas Web</h2>
+			<nav class="topnav navs">
+				<a href="https://www.youtube.com/watch?v=TRxJamt8Rmw"
+					><img src="imatges/luffy.jpg" alt="Luffy" height="52px"
+				/></a>
+				<a href="#" class="active">Inicio</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="content">
+				<p>
+					Un modelo de arquitectura web describe la relación entre los
+					distintos elementos que componen la estructura de
+					funcionamiento de una página o aplicación web.
+				</p>
+				<a onclick="objetoP2P()" id="p2p">
+					<div class="cardLink">
+						<h4>Modelo Punto a Punto (P2P - Peer to Peer)</h4>
+					</div>
+				</a>
+				<div id="p2pModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>Modelo Peer to Peer</h3>
+						<p>
+							El modelo P2P es un modelo de arquitectura web que
+							permite a los usuarios compartir archivos entre sí
+							directamente, sin necesidad de un servidor central.
+							El modelo P2P se basa en la distribución de los
+							servicios entre los usuarios de la red, de forma que
+							cada uno de ellos actúa como servidor y cliente a la
+							vez.
+						</p>
+						<p>
+							El modelo P2P se basa en la distribución de los
+							servicios entre los usuarios de la red, de forma que
+							cada uno de ellos actúa como servidor y cliente a la
+							vez.
+						</p>
+						<hr />
+						<h4>Ventajas</h4>
+						<ul>
+							<li>
+								<b>Escalabilidad</b>: Millones de usuarios
+								potenciales. Cuantos más nodos conectados, mejor
+								será su funcionamiento.
+							</li>
+							<li>
+								<b>Robustez</b>: Los clientes pueden localizar
+								los recursos sin depender del correcto
+								funcionamiento de un único servidor.
+							</li>
+							<li>
+								<b>Descentralización y Seguridad</b>: Los
+								clientes pueden localizar los recursos sin
+								depender del correcto funcionamiento de un único
+								servidor.
+							</li>
+						</ul>
+						<hr />
+						<h4>Inconvenientes</h4>
+						<ul>
+							<li>
+								<b>Velocidad</b>: La velocidad de transferencia
+								de datos es menor que en el modelo
+								cliente-servidor.
+							</li>
+							<li>
+								<b>Fiabilidad</b>: No hay garantías de que los
+								recursos obtenidos desde un nodo sean realmente
+								los deseados. En el modelo C/S, el recurso
+								obtenido del servidor central es único, y no ha
+								podido ser modificado por otro nodo.
+							</li>
+							<li>
+								<b>Mantenimiento</b>: La actualización de los
+								recursos compartidos debe realizarse en todos
+								los nodos.
+							</li>
+						</ul>
+						<hr />
+					</div>
+				</div>
+				<a onclick="objetoClienteServidor()" id="clienteServidor">
+					<div class="cardLink">
+						<h4>Modelo Cliente / Servidor</h4>
+					</div>
+				</a>
+				<div id="clienteServidorModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>Modelo Cliente - Servidor</h3>
+						<p>
+							El modelo Cliente / Servidor es un modelo de
+							arquitectura web que se basa en la separación de las
+							tareas entre los clientes y los servidores. Los
+							servidores son los encargados de procesar las
+							peticiones de los clientes, mientras que los
+							clientes son los encargados de solicitar los
+							servicios de los servidores.
+						</p>
+						<p>
+							Aunque es común que cliente y servidor se comuniquen
+							a través de una red informática, nada impide que se
+							comuniquen a través de un medio físico, como por
+							ejemplo un cable coaxial, o incluso estén en la
+							misma máquina. Un servidor es un host que ejecuta
+							uno o más programas servidores que comparten sus
+							recursos con los clientes, aunque no se ejecuta
+							necesariamente sobre una sola máquina ni es
+							necesariamente un sólo programa.
+						</p>
+						<ol>
+							<li>
+								El usuario solicita la carga de una página web
+								mediante su URL.
+							</li>
+							<li>
+								El servidor recibe la petición de la página web.
+							</li>
+							<li>
+								Busca en sus sistema de almacenamiento la página
+								solicitada.
+							</li>
+							<li>
+								Envía el contenido de la página web por el mismo
+								medio por el que recibió la petición.
+							</li>
+							<li>
+								El navegador web recibe el código fuente de la
+								página y lo interpreta mostrando al usuario la
+								página web.
+							</li>
+						</ol>
+
+						<hr />
+						<h4>Ventajas</h4>
+						<ul>
+							<li>
+								<b>Centralización</b>: los accesos, recursos y
+								la integridad de los datos son controlados por
+								el servidor de forma que un programa cliente
+								defectuoso o no autorizado no pueda dañar el
+								sistema. Esta centralización también facilita la
+								tarea de actualizar datos u otros recursos.
+							</li>
+							<li>
+								<b>Escalabilidad</b>: se puede aumentar la
+								capacidad de clientes y servidores por separado.
+								Cualquier elemento puede ser aumentado (o
+								mejorado) en cualquier momento, o se pueden
+								añadir nuevos nodos a la red (clientes y/o
+								servidores).
+							</li>
+							<li>
+								<b>Mantenimiento</b>: al estar distribuidas las
+								funciones y responsabilidades entre varios
+								ordenadores independientes, es posible
+								reemplazar, reparar, actualizar, o incluso
+								trasladar un servidor, mientras que sus clientes
+								no se verán afectados por ese cambio
+								(<b>Encapsulación</b>).
+							</li>
+							<li><b>Seguridad en las transacciones.</b></li>
+							<li><b>Amigabilidad de la interfaz.</b></li>
+							<li><b>Facilidad de empleo.</b></li>
+						</ul>
+						<hr />
+						<h4>Desventajas</h4>
+						<ul>
+							<li>
+								<b>Congestión</b>: si la cantidad de clientes
+								crece, puede causar problemas de tráfico.
+							</li>
+							<li>
+								<b>Robustez</b>: el paradigma de C/S clásico no
+								tiene la robustez de una red P2P. Cuando un
+								servidor está caído, las peticiones de los
+								clientes no pueden ser satisfechas.
+							</li>
+							<li>
+								<b>Especialización</b>: El software y el
+								hardware de un servidor son generalmente muy
+								determinantes. Un hardware regular de un
+								ordenador personal puede no poder servir a
+								cierta cantidad de clientes. Normalmente se
+								necesita software y hardware específico, sobre
+								todo en el lado del servidor, para satisfacer el
+								trabajo. Por supuesto, esto aumentará el coste.
+							</li>
+						</ul>
+					</div>
+				</div>
+				<a onclick="objetoAppServer()" id="appServer">
+					<div class="cardLink">
+						<h4>Modelo con servidor de Aplicaciones</h4>
+					</div>
+				</a>
+				<div id="appServerModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>Modelo con servidor de Aplicaciones</h3>
+						<p>
+							Los recursos que maneja un servidor de aplicaciones
+							no son archivos estáticos, sino que contienen el
+							código que se ah de ejecutar. Es decir, mandan al
+							cliente el resultado de ejecutar su petición, y no
+							el código que se ha de ejecutar. Por tanto, el
+							servidor de aplicaciones es el que se encarga de
+							interpretar el código que se le envía, y de
+							ejecutarlo.
+						</p>
+						<p>
+							El servidor web recibe la petición de un recurso, y
+							si éste corresponde a un recurso dinámico,
+							transfiere la parte correspondiente al servidor de
+							aplicaciones el cual devolverá de nuevo al servidor
+							web el recurso ejecutado. Finalmente será el
+							servidor web el que envíe al cliente el resultado
+							final.
+						</p>
+						<p>
+							Es muy frecuente que el servidor de aplicaciones
+							deba conectarse con una base de datos para obtener
+							los datos solicitados durante la ejecución del
+							código. Dicha base de datos puede residir en la
+							misma máquina que el servidor web o en otro host
+							conectado en red.
+						</p>
+					</div>
+				</div>
+				<a onclick="objetoExtAppServer()" id="extAppServer">
+					<div class="cardLink">
+						<h4>Modelo con servidor de aplicaciones externo</h4>
+					</div>
+				</a>
+				<div id="extAppServerModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>Modelo con servidor de aplicaciones externo</h3>
+						<p>
+							La parte correspondiente al servidor web suele tener
+							menos carga de trabajo que el servidor de
+							aplicaciones por lo que se puede establecer una
+							estructura en la que el servidor web sea
+							independiente del servidor de aplicaciones, de
+							manera que el servidor web se pueda implantar de
+							forma dedicada precisando menos recursos. Un
+							redirector será el encargado de transferir al
+							servidor de aplicaciones los elementos que necesiten
+							ser ejecutados, mientras que no pasarán del servidor
+							web los recursos estáticos.
+						</p>
+					</div>
+				</div>
+				<a onclick="objetoMultAppServer()" id="multAppServer">
+					<div class="cardLink">
+						<h4>Modelo con varios servidores de aplicaciones</h4>
+					</div>
+				</a>
+				<div id="multAppServerModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>Modelo con varios servidores de aplicaciones</h3>
+						<p>
+							Si la carga de trabajo del servidor de aplicaciones
+							se estima que va a ser elevado, se puede implantar
+							un sistema con varios servidores de aplicaciones
+							unidos a un mismo servidor web que requiere menos
+							rendimiento. La conexión se realizará a través de un
+							redirector como en el caso anterior, que además
+							realizará las funciones de balanceador de carga para
+							determinar en un determinado momento qué servidor de
+							aplicaciones debe ejecutar el código en función de
+							la carga de trabajo que tenga cada uno. En este
+							caso, todos los servidores de aplicaciones deben ser
+							iguales.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="container footer">
+			<nav class="botnav navs">
+				<a href="https://github.com/xSharkhy"
+					><img src="imatges/git.svg" alt="GIT Icon" height="36px"
+				/></a>
+				<a href="https://twitter.com/Sharkhy_"
+					><img
+						src="imatges/twitter.svg"
+						alt="Twitter Icon"
+						height="36px"
+				/></a>
+				<a href="https://twitch.tv/Sharkho_"
+					><img
+						src="imatges/twitch.svg"
+						alt="Twitch Icon"
+						height="36px"
+				/></a>
+				<a href="https://instagram.com/Sharkhy_"
+					><img
+						src="imatges/instagram.svg"
+						alt="Instagram Icon"
+						height="36px"
+				/></a>
+			</nav>
+		</footer>
+		<script src="js/main.js"></script>
+	</body>
+</html>

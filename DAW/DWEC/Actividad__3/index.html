@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Ismael Morejón</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<div class="ex1">
+		<form action="#">
+			<p>Introduce los primeros enteros separados por comas:</p>
+			<input type="text" id="n1ex1" placeholder="Introduce los elementos del primer array" />
+			<p>Introduce los segundos enteros separados por comas:</p>
+			<input type="text" id="n2ex1" placeholder="Introduce los elementos del segundo array" />
+			<br>
+			<input type="button" value="Concatenar" onclick="concatenar1()" />
+			<input type="button" value="Reiniciar" onclick="reiniciar()" />
+			<p id="res1"></p>
+		</form>
+	</div>
+	<div class="ex2">
+		<form action="#">
+			<p>Introduce los primeros enteros separados por comas:</p>
+			<input type="text" id="n1ex2" placeholder="Introduce los elementos del primer array" />
+			<input type="number" id="numeric1" value="1" />
+			<p>Introduce los segundos enteros separados por comas:</p>
+			<input type="text" id="n2ex2" placeholder="Introduce los elementos del segundo array" />
+			<input type="number" id="numeric2" value="1" />
+			<br>
+			<input type="button" value="Concatenar" onclick="concatenar2()" />
+			<input type="button" value="Reiniciar" onclick="reiniciar()" />
+			<p id="res2"></p>
+		</form>
+	</div>
+	<div class="ex3">
+		<form action="#">
+			<p>Introduce los primeros enteros separados por comas:</p>
+			<input type="text" id="n1ex3" placeholder="Introduce los elementos del primer array" />
+			<label for="value">Valor: </label>
+			<input type="number" name="value" id="value" value="1" />
+			<label for="position">Valor: </label>
+			<input type="number" name="position" id="position" value="1" />
+			<input type="button" value="Insertar" onclick="insertar()">
+			<input type="button" value="Reiniciar" onclick="reiniciar()" />
+			<p id="res3"></p>
+		</form>
+	</div>
+	<div class="ex4">
+		<form action="#">
+			<p>Introduce una cadena de texto:</p>
+			<input type="text" id="n1ex4" placeholder="Introduce una cadena de texto" />
+			<input type="button" value="Tratar cadena" onclick="tratamientoCadena()">
+			<p id="res4"></p>
+		</form>
+	</div>
+</body>
+
+</html>
