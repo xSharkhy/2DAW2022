@@ -1,6 +1,5 @@
 <?php
-// Recibe el código de un grupo por GET y muestra los álbumes de ese grupo.
-
+// Recibe el código de un album por GET y muestra los temas de ese album.
 // Conecta con la base de datos discografia con PDO
 const DB_DSN = 'mysql:host=localhost;dbname=discografia';
 const DB_OPTIONS = array(
@@ -16,18 +15,18 @@ try {
     exit;
 }
 
-// Comprueba si el código del grupo es válido
-$consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
+// Comprueba si el código del album es válido
+$consulta = $conexion->prepare('SELECT * FROM albumes WHERE codigo = ?;');
 $consulta->execute(array($_GET['codigo']));
 
-// Si no se ha recibido el código del grupo o no es válido, redirige a la página principal
+// Si no se ha recibido el código del album o no es válido, redirige a la página principal
 if (!isset($_GET['codigo']) || $consulta->rowCount() == 0) {
     header('Location: redirect.html');
     exit;
 }
 
-// Realiza la consulta de los álbumes del grupo
-$consulta = $conexion->prepare('SELECT * FROM albumes WHERE grupo = ? ORDER BY anyo;');
+// Realiza la consulta de los temas del album
+$consulta = $conexion->prepare('SELECT * FROM canciones WHERE album = ? ORDER BY posicion;');
 $consulta->execute(array($_GET['codigo']));
 ?>
 <!DOCTYPE html>
@@ -42,18 +41,22 @@ $consulta->execute(array($_GET['codigo']));
 </head>
 
 <body>
-    <ol>
+    <table>
+        <tr>
+            <th>Posición</th>
+            <th>Título</th>
+            <th>Duración</th>
+        </tr>
         <?php
-        // Muestra los álbumes en forma de lista ordenada
-        foreach ($consulta as $fila)
-            echo '<li><a href="album.php?codigo=' . $fila['codigo'] . '">' . $fila['titulo'] . '</a>
-            <a href="index.php?accion=borrar"
-            onclick="return confirm(\'¿Estás seguro de que quieres borrar el grupo ' . $fila['titulo'] . '?\')">
-            <img src="img/delete.svg" alt="Borrar"></a>
-            <a href="index.php?accion=modificar"><img src="img/edit.svg" alt="Modificar"></a></li>';
+        // Muestra los temas en forma de tabla
+        foreach ($consulta as $fila) {
+            $fila['duracion'] = floor($fila['duracion'] / 60) . ':' . str_pad($fila['duracion'] % 60, 2, '0', STR_PAD_LEFT);
+            echo '<tr><td>' . $fila['posicion'] . '</td><td>' . $fila['titulo'] . '</td><td>' . $fila['duracion'] . '</td></tr>';
+        }
+
+        
         ?>
-    </ol>
+    </table>
 </body>
 
-</html>
 </html>
