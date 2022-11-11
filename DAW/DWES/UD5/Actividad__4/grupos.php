@@ -1,6 +1,5 @@
 <?php
 // Recibe el código de un grupo por GET y muestra los álbumes de ese grupo.
-
 // Conecta con la base de datos discografia con PDO
 const DB_DSN = 'mysql:host=localhost;dbname=discografia';
 const DB_OPTIONS = array(
@@ -18,17 +17,17 @@ try {
 
 // Comprueba si el código del grupo es válido
 $consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
-$consulta->execute(array($_GET['codigo']));
+$consulta->execute(array($_GET['grupo']));
 
 // Si no se ha recibido el código del grupo o no es válido, redirige a la página principal
-if (!isset($_GET['codigo']) || $consulta->rowCount() == 0) {
+if (!isset($_GET['grupo']) || $consulta->rowCount() == 0) {
     header('Location: redirect.html');
     exit;
 }
 
 // Realiza la consulta de los álbumes del grupo
 $consulta = $conexion->prepare('SELECT * FROM albumes WHERE grupo = ? ORDER BY anyo;');
-$consulta->execute(array($_GET['codigo']));
+$consulta->execute(array($_GET['grupo']));
 ?>
 <!DOCTYPE html>
 <html lang="en">

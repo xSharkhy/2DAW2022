@@ -96,7 +96,7 @@ $conexion = null;
             // Muestra los grupos en forma de lista ordenada
             // Tras el nombre del grupo, muestra un icono de borrar y otro de editar
             foreach ($resultado as $fila)
-                echo '<li><a href="grupos.php?codigo=' . $fila['codigo'] . '">' . $fila['nombre'] . '</a>
+                echo '<li><a href="grupos.php?grupo=' . $fila['codigo'] . '">' . $fila['nombre'] . '</a>
                 <a href="index.php?accion=confirmar&codigo=' . $fila['codigo'] . '">
                 <img src="img/delete.svg" alt="Borrar"></a>
                 <a href="index.php?accion=editar&codigo=' . $fila['codigo'] . '">
