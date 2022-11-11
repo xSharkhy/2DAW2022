@@ -1,13 +1,12 @@
 <?php
-/*
-    Conecta con la base de datos discografia con PDO y realiza la consulta que
-    muestra el listado de grupos, si atrapa una excepción, redirige a una página segura
-*/
+// Conecta con la base de datos discografia con PDO
 const DB_DSN = 'mysql:host=localhost;dbname=discografia';
 const DB_OPTIONS = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 );
+
+// Conecta a la base de datos y realiza la consulta, si atrapa una excepción, redirige a una página segura
 try {
     $conexion = new PDO(DB_DSN, 'vetustamorla', '15151', DB_OPTIONS);
     $resultado = $conexion->query('SELECT * FROM grupos ORDER BY nombre;');
@@ -16,62 +15,74 @@ try {
     exit;
 }
 
-// Si recibe datos por POST, comprueba si hay algún campo vacío y recorta los espacios restantes
 if (!empty($_POST)) {
+    // Recorta los espacios restantes y comprueba si hay algún campo vacío
     foreach ($_POST as $key => $value) {
         $_POST[$key] = trim($value);
         if (empty($_POST[$key])) $error[$key] = true;
     }
-    // Si no hay ningún campo vacío, valida los datos
-    if (!isset($error)) {
+
+    if (isset($error)) echo '<div class="error">Hay campos vacíos en el formulario</div>';
+    else {
         preg_match('/^[0-9a-zA-ZÀ-ÿñÑçÇ\'\-\s]{1,50}$/', $_POST['nombre']) ? true : $error['nombre'] = 'El nombre de usuario debe tener  máximo 50 caracteres';
         preg_match('/^[0-9a-zA-ZÀ-ÿñÑçÇ\'\-\s]{1,50}$/', $_POST['genero']) ? true : $error['genero'] = 'El género debe tener máximo 50 caracteres';
         preg_match('/^[0-9a-zA-ZÀ-ÿñÑçÇ\'\-\s]{1,20}$/', $_POST['pais']) ? true : $error['pais'] = 'El país debe tener máximo 20 letras.';
         preg_match('/^\d{3,4}$/', $_POST['inicio']) ? true : $error['inicio'] = 'La fecha es incorrecta.';
+        if (!isset($error)) {
+            // Comprueba si se recibe acción por GET
+            if (isset($_GET['accion'])) {
+                // Si la acción es editar, llena el formulario con los datos del grupo
+                if ($_GET['accion'] == 'editar') {
+                    $resultado = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?');
+                    $resultado->execute(array($_GET['codigo']));
+                    $grupo = $resultado->fetch();
 
-        // Si se recibe el campo 'codigo', actualiza el registro
-        if (isset($_POST['codigo']) && !isset($error)) {
-            $consulta = $conexion->prepare('UPDATE grupos SET nombre = ?, genero = ?, pais = ?, inicio = ? WHERE codigo = ?;');
-            $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio'], $_POST['codigo']));
-            header('Location: index.php');
-            exit;
-            // Si no se recibe el campo 'codigo', inserta el registro
-        } elseif (!isset($error)) {
-            $consulta = $conexion->prepare('INSERT INTO grupos (nombre, genero, pais, inicio) VALUES (?, ?, ?, ?);');
-            $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio']));
-            header('Location: index.php');
-            exit;
+                    $_POST['codigo'] = $grupo['codigo'];
+                    $_POST['nombre'] = $grupo['nombre'];
+                    $_POST['genero'] = $grupo['genero'];
+                    $_POST['pais'] = $grupo['pais'];
+                    $_POST['inicio'] = $grupo['inicio'];
+                }
+                // Si la acción es borrar, borra el grupo
+                else if ($_GET['accion'] == 'borrar') {
+                    $resultado = $conexion->prepare('DELETE FROM grupos WHERE codigo = ?');
+                    $resultado->execute(array($_GET['codigo']));
+                    header('Location: redirect.html');
+                }
+                // Si la acción es confirmar, manda por post el nombre del grupo
+                else if ($_GET['accion'] == 'confirmar') {
+                    $resultado = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?');
+                    $resultado->execute(array($_GET['codigo']));
+                    $grupo = $resultado->fetch();
+                    $_POST['codigo'] = $grupo['codigo'];
+                    $_POST['nombre'] = $grupo['nombre'];
+                } else {
+                    // Si la acción no es válida, redirige a una página segura
+                    header('Location: redirect.html');
+                    exit;
+                }
+            } else {
+                // Si no se recibe acción por GET
+                // Comprueba si se recibe código de grupo por POST y si es correcto
+                if (isset($_POST['codigo']) && preg_match('/^\d{1,3}$/', $_POST['codigo'])) {
+                    // Actualizar el grupo
+                    $consulta = $conexion->prepare('UPDATE grupos SET nombre = ?, genero = ?, pais = ?, inicio = ? WHERE codigo = ?;');
+                    $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio'], $_POST['codigo']));
+                    header('Location: index.php');
+                } else {
+                    // Insertar el grupo
+                    $consulta = $conexion->prepare('INSERT INTO grupos (nombre, genero, pais, inicio) VALUES (?, ?, ?, ?);');
+                    $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio']));
+                    header('Location: index.php');
+                }
+            }
         }
     }
-    // Si hay algún campo vacío, muestra un mensaje de error
-    else echo '<p class="error">Rellena todos los campos.</p>';
 }
-// Si recibe la acción editar por GET con un codigo, rellena el formulario con los datos del registro por POST
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST['codigo'] = $registro['codigo'];
-    $_POST['nombre'] = $registro['nombre'];
-    $_POST['genero'] = $registro['genero'];
-    $_POST['pais'] = $registro['pais'];
-    $_POST['inicio'] = $registro['inicio'];
-} // Si recibe la acción borrar por GET con un codigo, borra el registro
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'borrar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('DELETE FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    header('Location: index.php');
-    exit;
-} // Si recibe al acción confirmar por GET con un codigo, devolverá el nombre del grupo por POST
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'confirmar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT nombre FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST['codigo'] = $_GET['codigo'];
-    $_POST['nombre'] = $registro['nombre'];
-}
-// Cierra la conexión
+
+// Cierra la conexión con la base de datos
 $conexion = null;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +116,7 @@ $conexion = null;
         </ol>
     </div>
     <div>
-        <form action="#" method="POST">
+        <form action="#" method="post">
             <fieldset>
                 <legend>
                     <?php
@@ -146,7 +157,7 @@ $conexion = null;
                         <a id="myButton" href="index.php?accion=borrar&codigo=' . $_GET['codigo'] . '">Borrar</a>
                     </fieldset>';
                 }
-                if (!(isset($_GET['accion']) && $_GET['accion'] == 'confirmar')) echo '<input type="submit" value="' . $accion . '">';
+                echo '<input type="submit" value="' . $accion . '">';
                 ?>
             </fieldset>
         </form>
