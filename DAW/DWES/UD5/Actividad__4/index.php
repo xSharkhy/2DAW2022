@@ -30,43 +30,52 @@ if (!empty($_POST)) {
         preg_match('/^\d{3,4}$/', $_POST['inicio']) ? true : $error['inicio'] = 'La fecha es incorrecta.';
 
         // Si se recibe el campo 'codigo', actualiza el registro
-        if (isset($_POST['codigo']) && !isset($error)) {
-            $consulta = $conexion->prepare('UPDATE grupos SET nombre = ?, genero = ?, pais = ?, inicio = ? WHERE codigo = ?;');
-            $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio'], $_POST['codigo']));
-            header('Location: index.php');
-            exit;
-            // Si no se recibe el campo 'codigo', inserta el registro
-        } elseif (!isset($error)) {
-            $consulta = $conexion->prepare('INSERT INTO grupos (nombre, genero, pais, inicio) VALUES (?, ?, ?, ?);');
-            $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio']));
-            header('Location: index.php');
-            exit;
+        if (!isset($error)) {
+            if (isset($_POST['codigo'])) {
+                $consulta = $conexion->prepare('UPDATE grupos SET nombre = ?, genero = ?, pais = ?, inicio = ? WHERE codigo = ?;');
+                $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio'], $_POST['codigo']));
+                header('Location: index.php');
+                exit;
+            } else {
+                $consulta = $conexion->prepare('INSERT INTO grupos (nombre, genero, pais, inicio) VALUES (?, ?, ?, ?);');
+                $consulta->execute(array($_POST['nombre'], $_POST['genero'], $_POST['pais'], $_POST['inicio']));
+                header('Location: index.php');
+                exit;
+            }
         }
     }
     // Si hay algún campo vacío, muestra un mensaje de error
     else echo '<span class="error">Rellena todos los campos.</span>';
 }
 // Si recibe la acción editar por GET con un codigo, rellena el formulario con los datos del registro por POST
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST = $registro;
-} // Si recibe la acción borrar por GET con un codigo, borra el registro
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'borrar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('DELETE FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    header('Location: index.php');
-    exit;
-} // Si recibe al acción confirmar por GET con un codigo, devolverá el nombre del grupo por POST
-elseif (isset($_GET['accion']) && $_GET['accion'] == 'confirmar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT nombre FROM grupos WHERE codigo = ?;');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST['codigo'] = $_GET['codigo'];
-    $_POST['nombre'] = $registro['nombre'];
+if (isset($_GET['accion']) && isset($_GET['codigo'])) {
+    switch ($_GET['accion']) {
+        case 'editar':
+            $consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
+            $consulta->execute(array($_GET['codigo']));
+            $registro = $consulta->fetch();
+            $_POST = $registro;
+            break;
+        case 'borrar':
+            $consulta = $conexion->prepare('DELETE FROM grupos WHERE codigo = ?;');
+            $consulta->execute(array($_GET['codigo']));
+            header('Location: index.php');
+            exit;
+            break;
+        case 'confirmar':
+            $consulta = $conexion->prepare('SELECT nombre FROM grupos WHERE codigo = ?;');
+            $consulta->execute(array($_GET['codigo']));
+            $registro = $consulta->fetch();
+            $_POST['codigo'] = $_GET['codigo'];
+            $_POST['nombre'] = $registro['nombre'];
+            break;
+        default:
+            header('Location: redirect.php');
+            exit;
+    }
 }
-// Cierra la conexión
+
+// Cierra la conexión con la base de datos
 $conexion = null;
 ?>
 <!DOCTYPE html>

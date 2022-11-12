@@ -50,43 +50,52 @@ if (!empty($_POST)) {
         preg_match('/^\d+((\,|\.)\d{1,2})?$/', $_POST['precio']) ? true : $error['precio'] = 'El precio debe tener el formato 00,00';
 
         // Validamos la fecha de compra para poder insertarla en la base de datos
-        if (!isset($error)) $_POST['fechacompra'] = date('Y-m-d', strtotime($_POST['fechacompra']));
-
-        // Si se recibe el campo 'codigo', actualiza el registro
-        if (isset($_POST['codigo']) && !isset($error)) {
-            $consulta = $conexion->prepare('UPDATE albumes SET titulo = ?, anyo = ?, formato = ?, fechacompra = ?, precio = ? WHERE codigo = ?');
-            $consulta->execute(array($_POST['titulo'], $_POST['anyo'], $_POST['formato'], $_POST['fechacompra'], $_POST['precio'], $_POST['codigo']));
-            header('Location: grupos.php?grupo=' . $_GET['grupo']);
-            exit;
-            // Si no se recibe el campo 'codigo', inserta el registro
-        } elseif (!isset($error)) {
-            $consulta = $conexion->prepare('INSERT INTO albumes (titulo, anyo, formato, fechacompra, precio, grupo) VALUES (?, ?, ?, ?, ?, ?)');
-            $consulta->execute(array($_POST['titulo'], $_POST['anyo'], $_POST['formato'], $_POST['fechacompra'], $_POST['precio'], $_GET['grupo']));
-            header('Location: grupos.php?grupo=' . $_GET['grupo']);
-            exit;
+        if (!isset($error)) {
+            // Validamos la fecha de compra para poder insertarla en la base de datos
+            $_POST['fechacompra'] = date('Y-m-d', strtotime($_POST['fechacompra']));
+            if (isset($_POST['codigo'])) { // Si se recibe el campo 'codigo', actualiza el registro
+                $consulta = $conexion->prepare('UPDATE albumes SET titulo = ?, anyo = ?, formato = ?, fechacompra = ?, precio = ? WHERE codigo = ?');
+                $consulta->execute(array($_POST['titulo'], $_POST['anyo'], $_POST['formato'], $_POST['fechacompra'], $_POST['precio'], $_POST['codigo']));
+                header('Location: grupos.php?grupo=' . $_GET['grupo']);
+                exit;
+            } else { // Si no se recibe el campo 'codigo', inserta el registro
+                $consulta = $conexion->prepare('INSERT INTO albumes (titulo, anyo, formato, fechacompra, precio, grupo) VALUES (?, ?, ?, ?, ?, ?)');
+                $consulta->execute(array($_POST['titulo'], $_POST['anyo'], $_POST['formato'], $_POST['fechacompra'], $_POST['precio'], $_GET['grupo']));
+                header('Location: grupos.php?grupo=' . $_GET['grupo']);
+                exit;
+            }
         }
     }
     // Si hay algún campo vacío, muestra un mensaje de error
     else echo '<span class="error">Rellena todos los campos.</span>';
 }
-// Si recibe la acción editar por GET con un codigo, rellena el formulario con los datos del registro por POST
-if (isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT * FROM albumes WHERE codigo = ?');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST = $registro;
-    $_POST['fechacompra'] = date('d/m/Y', strtotime($_POST['fechacompra']));
-} elseif (isset($_GET['accion']) && $_GET['accion'] == 'borrar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('DELETE FROM albumes WHERE codigo = ?');
-    $consulta->execute(array($_GET['codigo']));
-    header('Location: grupos.php?grupo=' . $_GET['grupo']);
-    exit;
-} elseif (isset($_GET['accion']) && $_GET['accion'] == 'confirmar' && isset($_GET['codigo'])) {
-    $consulta = $conexion->prepare('SELECT titulo FROM albumes WHERE codigo = ?');
-    $consulta->execute(array($_GET['codigo']));
-    $registro = $consulta->fetch();
-    $_POST['codigo'] = $_GET['codigo'];
-    $_POST['titulo'] = $registro['titulo'];
+/*
+    Si llega el código del album por GET junto con una acción, comprueba la acción.
+        BORRAR:     Borra el album de la base de datos.
+        EDITAR:     Realiza una consulta para obtener los datos del tema y los mandará
+                    al formulario por POST.
+        CONFIRMAR:  Muestra un mensaje de confirmación de borrado y mandará el código 
+                    y el título del tema por POST.
+*/
+if (isset($_GET['accion']) && isset($_GET['codigo'])) {
+    if ($_GET['accion'] == 'editar') {
+        $consulta = $conexion->prepare('SELECT * FROM albumes WHERE codigo = ?');
+        $consulta->execute(array($_GET['codigo']));
+        $registro = $consulta->fetch();
+        $_POST = $registro;
+        $_POST['fechacompra'] = date('d/m/Y', strtotime($_POST['fechacompra']));
+    } elseif ($_GET['accion'] == 'borrar') {
+        $consulta = $conexion->prepare('DELETE FROM albumes WHERE codigo = ?');
+        $consulta->execute(array($_GET['codigo']));
+        header('Location: grupos.php?grupo=' . $_GET['grupo']);
+        exit;
+    } elseif ($_GET['accion'] == 'confirmar') {
+        $consulta = $conexion->prepare('SELECT titulo FROM albumes WHERE codigo = ?');
+        $consulta->execute(array($_GET['codigo']));
+        $registro = $consulta->fetch();
+        $_POST['codigo'] = $_GET['codigo'];
+        $_POST['titulo'] = $registro['titulo'];
+    }
 }
 
 // Cierra la conexión
@@ -104,6 +113,7 @@ $conexion = null;
 </head>
 
 <body>
+    <a id="volver" href="index.php">Volver</a>
     <div>
         <?php
         /*
@@ -164,9 +174,9 @@ $conexion = null;
                 */
                 $accion = 'Insertar';
                 if (isset($_GET['accion']) && $_GET['accion'] == 'editar') {
+                    $accion = 'Modificar';
                     echo '<input type="hidden" name="codigo" id="codigo" value="' . $_GET["codigo"] . '">';
                     echo '<a class="myButton" href="grupos.php?grupo=' . $_GET['grupo'] . '">Cancelar</a>';
-                    $accion = 'Modificar';
                 } else if (isset($_GET['accion']) && $_GET['accion'] == 'confirmar') {
                     echo '<fieldset>
                         <legend>Confirmar</legend>
