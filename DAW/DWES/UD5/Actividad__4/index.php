@@ -10,7 +10,7 @@ const DB_OPTIONS = array(
 );
 try {
     $conexion = new PDO(DB_DSN, 'vetustamorla', '15151', DB_OPTIONS);
-    $resultado = $conexion->query('SELECT * FROM grupos ORDER BY nombre;');
+    $resultado = $conexion->query('SELECT * FROM grupos ORDER BY codigo;');
 } catch (PDOException $e) {
     header('Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ');
     exit;
@@ -44,18 +44,14 @@ if (!empty($_POST)) {
         }
     }
     // Si hay algún campo vacío, muestra un mensaje de error
-    else echo '<p class="error">Rellena todos los campos.</p>';
+    else echo '<span class="error">Rellena todos los campos.</span>';
 }
 // Si recibe la acción editar por GET con un codigo, rellena el formulario con los datos del registro por POST
 elseif (isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['codigo'])) {
     $consulta = $conexion->prepare('SELECT * FROM grupos WHERE codigo = ?;');
     $consulta->execute(array($_GET['codigo']));
     $registro = $consulta->fetch();
-    $_POST['codigo'] = $registro['codigo'];
-    $_POST['nombre'] = $registro['nombre'];
-    $_POST['genero'] = $registro['genero'];
-    $_POST['pais'] = $registro['pais'];
-    $_POST['inicio'] = $registro['inicio'];
+    $_POST = $registro;
 } // Si recibe la acción borrar por GET con un codigo, borra el registro
 elseif (isset($_GET['accion']) && $_GET['accion'] == 'borrar' && isset($_GET['codigo'])) {
     $consulta = $conexion->prepare('DELETE FROM grupos WHERE codigo = ?;');
@@ -74,7 +70,7 @@ elseif (isset($_GET['accion']) && $_GET['accion'] == 'confirmar' && isset($_GET[
 $conexion = null;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -82,35 +78,38 @@ $conexion = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discografía | Ismael Morejón</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
     <div>
-        <ol>
-            <?php
-            // Muestra los grupos en forma de lista ordenada
-            // Tras el nombre del grupo, muestra un icono de borrar y otro de editar
+        <?php
+        /*
+            Muestra los grupos en forma de lista ordenada, tras el nombre
+            del grupo, muestra un icono de borrar y otro de editar. Si no
+            hay grupos, muestra un mensaje.
+        */
+        if ($resultado->rowCount() > 0) {
+            echo '<ol>';
             foreach ($resultado as $fila)
                 echo '<li><a href="grupos.php?grupo=' . $fila['codigo'] . '">' . $fila['nombre'] . '</a>
                 <a href="index.php?accion=confirmar&codigo=' . $fila['codigo'] . '">
                 <img src="img/delete.svg" alt="Borrar"></a>
                 <a href="index.php?accion=editar&codigo=' . $fila['codigo'] . '">
                 <img src="img/edit.svg" alt="Modificar"></a></li>';
-            ?>
-        </ol>
+            echo '</ol>';
+        } else echo '<p>No hay grupos.</p>';
+
+        ?>
     </div>
     <div>
         <form action="#" method="POST">
             <fieldset>
                 <legend>
                     <?php
-                    // Si la acción es 'editar', muestra 'Modificar grupo'
-                    // Si no, muestra 'Insertar grupo'
+                    /*
+                        Si la acción es 'editar', muestra 'Modificar grupo'
+                        Si no, muestra 'Insertar grupo'
+                    */
                     if (isset($_GET['accion']) && $_GET['accion'] == 'editar')
                         echo 'Modificar grupo';
                     else
@@ -131,19 +130,22 @@ $conexion = null;
                 <?= isset($error['inicio']) ? (is_bool($error['inicio']) ? '' : '<span class="error">' . $error['inicio']) . '</span>' : '' ?><br>
 
                 <?php
-                // Si la acción es 'editar', muestra un botón de 'Cancelar' que redirige a index.php y un botón de 'Modificar'
-                // Si no, muestra un botón de 'Insertar'
+                /*
+                    Si la acción es 'editar', muestra un botón de 'Cancelar' que
+                    redirige a index.php y un botón de 'Modificar'.
+                    Si la acción no es confirmar, muestra un botón de 'Insertar'
+                */
                 $accion = 'Insertar';
                 if (isset($_GET['accion']) && $_GET['accion'] == 'editar') {
                     echo '<input type="hidden" name="codigo" id="codigo" value="' . $_GET["codigo"] . '">';
-                    echo '<a id="myButton" href="index.php">Cancelar</a>';
+                    echo '<a class="myButton" href="index.php">Cancelar</a>';
                     $accion = 'Modificar';
                 } else if (isset($_GET['accion']) && $_GET['accion'] == 'confirmar') {
                     echo '<fieldset>
                         <legend>Confirmar</legend>
                         <p>¿Estás seguro de que quieres borrar el grupo <b>' . $_POST['nombre'] . '</b>?</p>
-                        <a id="myButton" href="index.php">Cancelar</a>
-                        <a id="myButton" href="index.php?accion=borrar&codigo=' . $_GET['codigo'] . '">Borrar</a>
+                        <a class="myButton" href="index.php">Cancelar</a>
+                        <a class="myButton" href="index.php?accion=borrar&codigo=' . $_GET['codigo'] . '">Borrar</a>
                     </fieldset>';
                 }
                 if (!(isset($_GET['accion']) && $_GET['accion'] == 'confirmar')) echo '<input type="submit" value="' . $accion . '">';

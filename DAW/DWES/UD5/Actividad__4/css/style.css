@@ -76,7 +76,7 @@ label {
 	margin-right: 1em;
 }
 
-#myButton {
+.myButton {
 	background-color: #efefef;
 	border: 1px solid gray;
 	border-radius: 3px;
@@ -90,10 +90,10 @@ label {
 	cursor: pointer;
 }
 
-#myButton:hover {
+.myButton:hover {
 	background-color: #d0d0d0;
 }
 
-span {
+span.error {
     color: red;
 }

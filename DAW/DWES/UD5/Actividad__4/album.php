@@ -1,13 +1,13 @@
 <?php
-// Recibe el código de un album por GET y muestra los temas de ese album.
-// Conecta con la base de datos discografia con PDO
+/*
+    Conecta con la base de datos discografia con PDO, si atrapa una excepción,
+    redirige a una página segura.
+*/
 const DB_DSN = 'mysql:host=localhost;dbname=discografia';
 const DB_OPTIONS = array(
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 );
-
-// Conecta a la base de datos, si atrapa una excepción, redirige a una página segura
 try {
     $conexion = new PDO(DB_DSN, 'vetustamorla', '15151', DB_OPTIONS);
 } catch (PDOException $e) {
@@ -17,17 +17,17 @@ try {
 
 // Comprueba si el código del album es válido
 $consulta = $conexion->prepare('SELECT * FROM albumes WHERE codigo = ?;');
-$consulta->execute(array($_GET['codigo']));
+$consulta->execute(array($_GET['album']));
 
 // Si no se ha recibido el código del album o no es válido, redirige a la página principal
-if (!isset($_GET['codigo']) || $consulta->rowCount() == 0) {
+if (!isset($_GET['album']) || $consulta->rowCount() == 0) {
     header('Location: redirect.html');
     exit;
 }
 
 // Realiza la consulta de los temas del album
 $consulta = $conexion->prepare('SELECT * FROM canciones WHERE album = ? ORDER BY posicion;');
-$consulta->execute(array($_GET['codigo']));
+$consulta->execute(array($_GET['album']));
 ?>
 <!DOCTYPE html>
 <html lang="en">
