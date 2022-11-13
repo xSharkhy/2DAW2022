@@ -2,7 +2,7 @@ import pyautogui, pyperclip, time, sys
 
 
 time.sleep(5)
-pyperclip.copy('hola aitor te voy a copiar esto')
+pyperclip.copy('Javier no entregues la práctica')
 
 while True:
     pyautogui.hotkey('ctrl', 'v')
