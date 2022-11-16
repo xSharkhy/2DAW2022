@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input + span {
+            background: rgb(12, 121, 211);
+            color: white
+        }
+
+        input ~ div {
+            background: green;
+            color: white
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text">
+        <span>span con color de fondo</span>
+        <span> span con color de fondo</span><br>
+        <input type="text">
+        <div>div al mismo nivel</div>
+        <div>div al mismo nivel</div>
+    </div>
+
+    <div>
+        <span>span sin color de fondo</span>
+    </div>
+
+</body>
+
+</html>
