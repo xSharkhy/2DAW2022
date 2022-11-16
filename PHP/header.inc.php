@@ -1,4 +1,3 @@
-
 <header class="container header">
     <nav class="topnav navs">
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="imatges/luffy.jpg" alt="Luffy" height="52px"></a>
