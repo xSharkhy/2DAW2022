@@ -1,14 +1,9 @@
 <?php
 require_once 'include/dbconnection.inc.php';
-ini_set('session.name', 'SSID');
-ini_set('session.cache_expire', 10);
-ini_set('session.cookie_httponly', 1);
 session_start();
 
-
-
 // Crea una consulta que muestre todos los productos de la tabla productos
-$consultaProductos = $conexion->query('SELECT * FROM productos');
+$consultaProductos = $conexion->query('SELECT * FROM productos WHERE oferta != 0');
 
 ?>
 <!DOCTYPE html>
@@ -17,13 +12,13 @@ $consultaProductos = $conexion->query('SELECT * FROM productos');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MerchaShop INICIO | Ismael</title>
+    <title>MerchaShop OFERTAS | Ismael</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php require_once 'include/header.inc.php'; ?>
     <main class="main__container">
-        <h1>Productos</h1>
+        <h1>Oferta</h1>
         <div class="productos__container">
             <?php
             // Muestra los productos

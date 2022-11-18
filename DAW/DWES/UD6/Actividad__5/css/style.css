@@ -185,7 +185,7 @@ h2 > a {
 }
 
 .producto {
-	margin: .25em .5em .25em .5em;
+	margin: .5em;
 	padding: 1em;
 	--c: green; /* the color */
 	--b: 0.1em; /* border length*/

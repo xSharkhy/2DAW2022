@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    height: calc(100vh - 40px);
+    background-color: #f4f4f4;
+}
+
+.flex__container {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10em;
+    height: 10em;
+}
+
+.flex__item {
+    background-color: orangered;
+    width: 5em;
+    height: 5em;
+}
