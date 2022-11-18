@@ -8,6 +8,7 @@ $consultaProductos = $conexion->query('SELECT * FROM productos WHERE oferta != 0
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +16,11 @@ $consultaProductos = $conexion->query('SELECT * FROM productos WHERE oferta != 0
     <title>MerchaShop OFERTAS | Ismael</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <?php require_once 'include/header.inc.php'; ?>
     <main class="main__container">
-        <h1>Oferta</h1>
+        <h1>¡Oferta!</h1>
         <div class="productos__container">
             <?php
             // Muestra los productos
@@ -35,5 +37,7 @@ $consultaProductos = $conexion->query('SELECT * FROM productos WHERE oferta != 0
             }
             ?>
         </div>
+    </main>
 </body>
+
 </html>
