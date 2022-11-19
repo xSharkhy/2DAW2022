@@ -2,13 +2,24 @@
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
 
+// Si el usuario ya está logueado, lo redirigimos a la página de inicio
 if (isset($_SESSION['user']) || isset($_SESSION['admin'])) header('Location: index.php');
 
-if (isset($_GET['registered'])) $success = 'Usuario registrado correctamente.';
+// Si el usuario se acaba de registrar, mostramos un mensaje de éxito
+if (isset($_GET['registered'])) $success = '<h3>Usuario registrado correctamente.</h3>';
 
+
+/*
+    Si el usuario ha enviado el formulario de login, comprobamos que:
+    - El usuario existe en la base de datos
+    - La contraseña es correcta
+    - Si el usuario ha marcado la casilla de "Recordarme", creamos una cookie
+      con un TOKEN que se almacenará en la base de datos y que se utilizará
+        para identificar al usuario en futuras visitas
+*/
 if (isset($_POST['login'])) :
-    $consulta = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = ?;');
-    $consulta->execute([$_POST['user']]);
+    $consulta = $conexion->prepare('SELECT * FROM usuarios WHERE usuario LIKE ? OR email LIKE ?;');
+    $consulta->execute(array($_POST['user'], $_POST['user']));
     if ($consulta->rowCount() > 0) :
         $resultado = $consulta->fetch();
         if (password_verify($_POST['password'], $resultado['contrasenya'])) :

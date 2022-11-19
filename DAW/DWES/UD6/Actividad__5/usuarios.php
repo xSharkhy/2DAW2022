@@ -2,8 +2,11 @@
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
 
+// Si el usuario no es admin, lo redirigimos a la página de inicio
 if (!isset($_SESSION['admin'])) header('Location: index.php');
 
+// Volvemos a validar que el usuario sea admin mediante la variable de sesión
+// y una consulta a la base de datos
 $validar = $conexion->prepare('SELECT rol FROM usuarios WHERE usuario = ?;');
 $validar->execute([$_SESSION['admin']]);
 $validar = $validar->fetch()['rol'];

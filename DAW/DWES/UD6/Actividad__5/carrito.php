@@ -1,32 +1,21 @@
 <?php
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
+require_once 'include/carritoLogica.inc.php';
 
-if (isset($_GET['act']) && isset($_GET['id'])) {
-    switch ($_GET['act']) {
-        case 'add':
-            if (isset($_SESSION['carrito']))
-                if (isset($_SESSION['carrito'][$_GET['id']])) $_SESSION['carrito'][$_GET['id']]++;
-                else $_SESSION['carrito'][$_GET['id']] = 1;
-            else $_SESSION['carrito'][$_GET['id']] = 1;
+// Si llega una acción y un id, se ejecuta la función carrito y se manda un
+// párametro con la página desde la que se ha llamado a la función.
+if (isset($_GET['act']) && isset($_GET['id'])) carrito('carrito.php');
 
-            $_SESSION['timer'] = time() + 60 * 10;
-            break;
-            //Si la acción es eliminar se elimina el producto del carrito
-        case 'substract':
-            if (isset($_SESSION['carrito'][$_GET['id']]))
-                if ($_SESSION['carrito'][$_GET['id']] > 1) $_SESSION['carrito'][$_GET['id']]--;
-                else unset($_SESSION['carrito'][$_GET['id']]);
-            break;
-            //Si la acción es vaciar se vacía el carrito
-        case 'remove':
-            if (isset($_SESSION['carrito'][$_GET['id']])) unset($_SESSION['carrito'][$_GET['id']]);
-            if (count($_SESSION['carrito']) == 0) unset($_SESSION['carrito']);
-            break;
-    }
-    header('Location: carrito.php');
-}
+// Si el usuario no está logueado, se le redirige a la página de login.
+if (!isset($_SESSION['user']) || !isset($_SESSION['admin'])) header('Location: index.php');
 
+/*
+    Se muestra en forma de tabla el contenido del carrito.
+    Por cada producto, se realiza una consulta a la base de datos para obtener los datos del producto.
+    Se muestra el nombre del producto, la cantidad y el precio.
+    Además, se muestran las acciones de añadir, restar y eliminar producto.
+*/
 
 ?>
 <!DOCTYPE html>
@@ -79,6 +68,7 @@ if (isset($_GET['act']) && isset($_GET['id'])) {
                 <?php
                     endforeach;
                 endif;
+                $conexion = null;
                 ?>
             </tbody>
             <tfoot>

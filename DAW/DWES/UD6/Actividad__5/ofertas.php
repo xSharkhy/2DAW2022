@@ -1,35 +1,21 @@
 <?php
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
+require_once 'include/carritoLogica.inc.php';
+
+// Si llega una acción y un id, se ejecuta la función carrito y se manda un
+// párametro con la página desde la que se ha llamado a la función.
+if (isset($_GET['act']) && isset($_GET['id'])) carrito('ofertas.php');
 
 // Crea una consulta que muestre todos los productos de la tabla productos
 $consultaProductos = $conexion->query('SELECT * FROM productos WHERE oferta != 0;');
 
-if (isset($_SESSION['user']) || isset($_SESSION['admin'])) :
-    if (isset($_GET['act']) && isset($_GET['id'])) {
-        switch ($_GET['act']) {
-            case 'add':
-                if (isset($_SESSION['carrito']))
-                    if (isset($_SESSION['carrito'][$_GET['id']])) $_SESSION['carrito'][$_GET['id']]++;
-                    else $_SESSION['carrito'][$_GET['id']] = 1;
-                else $_SESSION['carrito'][$_GET['id']] = 1;
+/*
+    Si la consulta devuelve más de 0 resultados, se crea un array con los resultados
+    de la consulta y se recorre con un whiñe para mostrar los productos.
 
-                $_SESSION['timer'] = time() + 60 * 10;
-                break;
-                //Si la acción es eliminar se elimina el producto del carrito
-            case 'substract':
-                if (isset($_SESSION['carrito'][$_GET['id']]))
-                    if ($_SESSION['carrito'][$_GET['id']] > 1) $_SESSION['carrito'][$_GET['id']]--;
-                    else unset($_SESSION['carrito'][$_GET['id']]);
-                break;
-                //Si la acción es vaciar se vacía el carrito
-            case 'remove':
-                if (isset($_SESSION['carrito'][$_GET['id']])) unset($_SESSION['carrito'][$_GET['id']]);
-                break;
-        }
-        header('Location: ofertas.php');
-    }
-endif;
+    Si el usuario está logueado, además, se muestran los botones de control del carrito.
+*/
 
 ?>
 <!DOCTYPE html>

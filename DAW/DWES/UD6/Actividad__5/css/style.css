@@ -154,11 +154,16 @@ main {
 h1 {
 	font-size: 50px;
     text-shadow: 1px 1px whitesmoke;
+	font-weight: bolder;
 }
 
 h2 {
 	margin: 0;
 	padding: 0;
+}
+
+h3 {
+	color: darkolivegreen;
 }
 
 h2 > a {
@@ -309,7 +314,11 @@ th, td {
 }
 
 tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: lightgreen;
+}
+
+tr:nth-child(odd) {
+	background-color: whitesmoke;
 }
 
 th {

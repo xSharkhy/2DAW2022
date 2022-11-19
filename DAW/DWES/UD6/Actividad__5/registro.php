@@ -2,8 +2,18 @@
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
 
+// Si el usuario está logueado, lo redirigimos a la página de inicio
 if (isset($_SESSION['user']) || isset($_SESSION['admin'])) header('Location: index.php');
 
+/*
+    Si se ha enviado el formulario, comprobamos que:
+        (1) Ningún campo esté vacío
+        (2) Los campos cumplan sus RegExp
+        (3) Las contraseñas coincidan
+        (4) El usuario no exista en la base de datos
+        (5) El email no exista en la base de datos
+    Si todo es correcto, registramos al usuario en la base de datos
+*/
 if (!empty($_POST)) :
     foreach ($_POST as $key => $value) :
         $_POST[$key] = trim($value);

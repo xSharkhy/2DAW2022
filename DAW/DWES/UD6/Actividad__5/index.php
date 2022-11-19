@@ -1,31 +1,20 @@
 <?php
 require_once 'include/dbconnection.inc.php';
 require_once 'include/autologin.inc.php';
+require_once 'include/carritoLogica.inc.php';
 
-if (isset($_GET['act']) && isset($_GET['id'])) {
-    switch ($_GET['act']) {
-        case 'add':
-            if (isset($_SESSION['carrito']))
-                if (isset($_SESSION['carrito'][$_GET['id']])) $_SESSION['carrito'][$_GET['id']]++;
-                else $_SESSION['carrito'][$_GET['id']] = 1;
-            else $_SESSION['carrito'][$_GET['id']] = 1;
+// Si llega una acción y un id, se ejecuta la función carrito y se manda un
+// párametro con la página desde la que se ha llamado a la función.
+if (isset($_GET['act']) && isset($_GET['id'])) carrito('index.php');
 
-            $_SESSION['timer'] = time() + 60 * 10;
-            break;
-            //Si la acción es eliminar se elimina el producto del carrito
-        case 'substract':
-            if (isset($_SESSION['carrito'][$_GET['id']]))
-                if ($_SESSION['carrito'][$_GET['id']] > 1) $_SESSION['carrito'][$_GET['id']]--;
-                else unset($_SESSION['carrito'][$_GET['id']]);
-            break;
-            //Si la acción es vaciar se vacía el carrito
-        case 'remove':
-            if (isset($_SESSION['carrito'][$_GET['id']])) unset($_SESSION['carrito'][$_GET['id']]);
-            if (count($_SESSION['carrito']) == 1) unset($_SESSION['carrito']);
-            break;
-    }
-    header('Location: index.php');
-}
+/*
+    CASO 1: El usuario no está logueado.
+    - Se muestra un formulario de registro, un enlace a la página de login y un enlace a la página de productos.
+    - El formulario de registro mandará los datos a la página de registro.
+    CASO 2: El usuario está logueado.
+    - Se hace una consulta a la base de datos para obtener todos los productos.
+    - Se muestran los productos.
+*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,7 +46,10 @@ if (isset($_GET['act']) && isset($_GET['id'])) {
                         <a class="productLink" href="index.php?act=remove&id=<?= $producto['codigo'] ?>"><img src="img/papelera.png"></a>
                         <a class="productLink" href="index.php?act=substract&id=<?= $producto['codigo'] ?>"><img src="img/menos.png"></a>
                     </div>
-                <?php endwhile; ?>
+                <?php
+                endwhile;
+                $conexion = null;
+                ?>
             </div>
         <?php
         else : ?>
