@@ -7,6 +7,7 @@ const DB_OPTIONS = array(
 try {
     $conexion = new PDO(DB_DSN, 'Lumos', 'Nox', DB_OPTIONS);
 } catch (PDOException $e) {
+    $conexion = null;
     header('Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ');
     exit;
 }
