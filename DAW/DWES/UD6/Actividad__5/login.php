@@ -12,6 +12,12 @@ if (isset($_POST['login'])) :
     if ($consulta->rowCount() > 0) :
         $resultado = $consulta->fetch();
         if (password_verify($_POST['password'], $resultado['contrasenya'])) :
+            if ($_POST['remember'] == 'on') :
+                $token = bin2hex(random_bytes(32));
+                $consulta = $conexion->prepare('UPDATE usuarios SET token = ? WHERE usuario = ?;');
+                $consulta->execute([$token, $_POST['user']]);
+                setcookie('TOKEN', $token, time() + 60 * 60 * 24 * 30, $httponly = true);
+            endif;
             if ($resultado['rol'] == 'admin') :
                 $_SESSION['admin'] = $resultado['usuario'];
                 header('Location: index.php');
@@ -51,6 +57,10 @@ endif;
             <input type="text" name="user" id="user" required><br>
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password" required><br>
+            <div>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Recordar mis datos</label><br>
+            </div><br>
             <input type="submit" name="login" value="Iniciar Sesión">
             <p>¿Aún no tienes cuenta? <a href="index.php" id="registerB">Regístrate</a></p>
         </form>

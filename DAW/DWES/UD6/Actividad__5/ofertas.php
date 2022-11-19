@@ -14,7 +14,7 @@ if (isset($_SESSION['user']) || isset($_SESSION['admin'])) :
                     else $_SESSION['carrito'][$_GET['id']] = 1;
                 else $_SESSION['carrito'][$_GET['id']] = 1;
 
-                $_SESSION['carrito']['timer'] = time() + 60 * 10;
+                $_SESSION['timer'] = time() + 60 * 10;
                 break;
                 //Si la acción es eliminar se elimina el producto del carrito
             case 'substract':

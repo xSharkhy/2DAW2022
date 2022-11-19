@@ -258,6 +258,13 @@ form {
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
 
+form > input {
+	margin: 0.5em;
+	padding: 0.5em;
+	border-radius: 5px;
+	border: 1px solid green;
+}
+
 #loginB, #registerB {
 	color: darkgreen;
 }
@@ -308,4 +315,9 @@ tr:nth-child(even) {
 th {
 	background-color: #4CAF50;
 	color: white;
+}
+
+table img {
+	width: 25%;
+	height: auto;
 }
