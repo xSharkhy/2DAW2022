@@ -1,0 +1,179 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #f4f4f4;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.login {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr;
+    width: 50%;
+    height: 100vh;
+    position: relative;
+    background-color: #f4f4f4;
+    float: right;
+}
+
+.login__form {
+    margin-left: 60px;
+    margin-top: 31px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr auto;
+    font-size: 14px;
+    line-height: 20px;
+    width: 210px;
+    height: 46px;
+    grid-column-gap: 10px;
+}
+
+.input__box {
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+    min-width: 210px;
+}
+
+.input__box:focus {
+    outline: none;
+}
+
+::placeholder {
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+.login__button {
+    background-color: #f4f4f4;
+    border-radius: 60px;
+    border: 1px solid #91246a;
+    color: #91246a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 1rem;
+    cursor: pointer;
+    margin: 0 .5rem;
+}
+
+.login__button:hover {
+    background-color: #91246a;
+    color: #f4f4f4;
+    transition: all 0.3s ease;
+}
+
+.login__logo {
+    width: 60px;
+    display: block;
+}
+
+.lema {
+    font-size: 2rem;
+	line-height: 32px;
+}
+
+.registro {
+    justify-self: center;
+    width: 355px;
+    height: 100px;
+    color: #14171a;
+    font-weight: 700;
+}
+
+.register__form {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.register__form > fieldset {
+    padding: 3rem;
+    border: 3px solid #91246a;
+}
+
+.register__form > fieldset > legend {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #91246a;
+    padding: 1em;
+}
+
+.register__form > fieldset > label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #91246a;
+}
+
+.register__form > fieldset > input {
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.register__button {
+    background-color: #f4f4f4;
+    border-radius: 60px;
+    border: 1px solid #91246a;
+    color: #91246a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin: .5rem 0;
+}
+
+.register__button:hover {
+    background-color: #91246a;
+    color: #f4f4f4;
+    transition: all 0.3s ease;
+}
+
+.descripcion {
+    background: #91246a;
+    width: 50%;
+    height: 100vh;
+    float: left;
+}
+
+.descripcion > div {
+    margin:auto;
+	width: 370px;
+	margin-top: 230px;
+}
+
+.descripcion p {
+    position: relative;
+    top: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+    padding-bottom: 30px;
+}
+
+.bulto {
+    height: 120px;
+    width: 100%;
+}
