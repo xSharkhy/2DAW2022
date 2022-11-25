@@ -19,14 +19,16 @@ if (!isset($_GET['id'])) header('Location: index.php');
     comentarios a estas y se cerrará la sesión y redirigirá a la página index.
 */
 if (isset($_POST['confirm'])) :
-    // Eliminamos al usuario
-    $conexion->query('DELETE FROM users WHERE id = ' . $_GET['id'] . ';');
-    // Eliminamos las revelaciones del usuario
-    $conexion->query('DELETE FROM revels WHERE userid = ' . $_GET['id'] . ';');
-    // Eliminamos los comentarios de las revelaciones borradas
-    $conexion->query('DELETE FROM comments WHERE revelid IN (SELECT id FROM revels WHERE userid = ' . $_GET['id'] . ');');
-    // Eliminamos los follows del usuario
-    $conexion->query('DELETE FROM follows WHERE userid = ' . $_GET['id'] . ' OR userfollowed = ' . $_GET['id'] . ';');
+    $consulta = $conexion->prepare('DELETE FROM comments WHERE userid = ?;');
+    $consulta->execute([$_GET['id']]);
+    $consulta = $conexion->prepare('DELETE FROM revels WHERE userid = ?;');
+    $consulta->execute([$_GET['id']]);
+    $consulta = $conexion->prepare('DELETE FROM follows WHERE userid = ?;');
+    $consulta->execute([$_GET['id']]);
+    $consulta = $conexion->prepare('DELETE FROM users WHERE id = ?;');
+    $consulta->execute([$_GET['id']]);
+    session_destroy();
+    header('Location: index.php');
 else :
 ?>
     <!DOCTYPE html>
@@ -41,12 +43,22 @@ else :
         <link rel="shortcut icon" href="img/ICONO-NEGATIVO.svg" type="image/x-icon">
     </head>
 
-    <body>
+    <body class="back-end">
+        <div class="header">
+            <div class="revels-icon">
+                <h2 id="headerh2"><a href="index.php"><img src="img/ICONO-NEGATIVO.svg" alt="Icono Revels">REVELS</a></h2>
+            </div>
+            <div class="account">
+                <a href="account.php"><img src="img/Profile.svg" alt="Perfil"></a>
+            </div>
+            <div class="logout">
+                <a href="logout.php"><img src="img/Logout.svg" alt="Cerrar Sesión"></a>
+            </div>
+        </div>
         <div class="content">
             <h1>¿Estás seguro de que quieres eliminar tu cuenta?</h1>
             <form action="cancel.php?id=<?= $_GET['id'] ?>" method="post">
-                <input type="checkbox" name="confirm" id="confirm" required>
-                <label for="confirm">Confirmo que quiero eliminar mi cuenta</label>
+                <label for="confirm"><input type="checkbox" name="confirm" id="confirm" required>Confirmo que quiero eliminar mi cuenta</label>
                 <input type="submit" value="Eliminar">
             </form>
         </div>

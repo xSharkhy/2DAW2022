@@ -23,10 +23,10 @@ if (isset($_POST['login'])) :
             $_SESSION['id'] = $resultado['id'];
             header('Location: index.php');
         else :
-            $error = 'Contraseña incorrecta';
+            $error['pass'] = 'Contraseña incorrecta';
         endif;
     else :
-        $error = 'Usuario no registrado';
+        $error['user'] = 'Usuario no registrado';
     endif;
 endif;
 
@@ -49,6 +49,7 @@ endif;
                 <div class="bulto"></div>
                 <form action="#" class="register__form" method="post">
                     <fieldset>
+                        <?= $success ?? '' ?>
                         <legend><span class="join__span">Inicia sesión en Revels.</span></legend>
                         <label for="user">Usuario</label><br>
                         <input type="text" name="user" id="user" class="input__box" placeholder="Usuario" required>
@@ -60,7 +61,7 @@ endif;
                     </fieldset>
                 </form>
                 <div class="register__link">
-                    <span>¿No tienes una cuenta? <a href="register.php">Regístrate</a></span>
+                    <span>¿No tienes una cuenta? <a href="index.php">Regístrate</a></span>
                 </div>
             </div>
         </div>

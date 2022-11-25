@@ -14,6 +14,16 @@ body {
     background-color: #f4f4f4;
 }
 
+body.back-end {
+    background-color: #ffc1e9;
+    padding: 5em;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: flex-start;
+    height: 100vh;
+    flex-direction: column;
+}
+
 .grid__container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -93,6 +103,11 @@ input {
     height: 1em;
 }
 
+.header > div > a > img {
+    height: 1.6em;
+    filter: brightness(0) invert(1);
+}
+
 .aside {
     grid-area: aside;
     display: flex;
@@ -101,6 +116,11 @@ input {
     height: 92vh;
     border-right: 1px solid #91246a;
     overflow: hidden;
+}
+
+.noflex > * {
+    display: inline;
+    width: 40%;
 }
 
 .content {
@@ -177,3 +197,58 @@ a.revel:hover {
     font-weight: bolder;
 }
 
+h4 {
+    font-weight: bolder;
+    margin-top: .5rem;
+    color: #91246a;
+}
+
+.back-end form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #91246a;
+    border-radius: 6px;
+}
+
+.back-end form > input {
+    margin: 2px;
+    padding: .5rem;
+    border: 1px solid #91246a;
+    border-radius: 3px;
+}
+
+.back-end div {
+    margin: 5% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-end .header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 3rem;
+    margin: 0;
+}
+
+.back-end table {
+    margin: 2em 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.back-end table td, th {
+    border: 1px solid #91246a;
+    padding: 8px;
+}
+
+#confirm {
+    margin: 1rem;
+}

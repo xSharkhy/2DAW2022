@@ -23,7 +23,7 @@ if (!empty($_POST)) :
     endif;
 
     if (!isset($error)) :
-        $consulta = $conexion->query('SELECT * FROM users;');
+        $consulta = $conexion->query('SELECT * FROM users WHERE id != ' . $_SESSION['id'] . ';');
         while ($usuario = $consulta->fetch()) :
             if ($usuario['email'] == $_POST['email']) $error['email'] = 'El email ya está registrado';
             if ($usuario['usuario'] == $_POST['user']) $error['user'] = 'El nombre de usuario ya está registrado';
@@ -31,7 +31,7 @@ if (!empty($_POST)) :
     endif;
 
     if (!isset($error)) :
-        $consulta = $conexion->prepare('UPDATE users SET email = ?, usuario = ?, pass = ? WHERE id = ?;');
+        $consulta = $conexion->prepare('UPDATE users SET email = ?, usuario = ?, contrasenya = ? WHERE id = ?;');
         $consulta->execute([$_POST['email'], $_POST['user'], password_hash($_POST['pass'], PASSWORD_DEFAULT), $_SESSION['id']]);
         $_SESSION['user'] = $_POST['user'];
         header('Location: account.php');
@@ -53,9 +53,22 @@ endif;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACCOUNT Revels | Ismael</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/ICONO-NEGATIVO.svg" type="image/x-icon">
 </head>
 
-<body>
+<body class="back-end">
+    <div class="header">
+        <div class="revels-icon">
+            <h2 id="headerh2"><a href="index.php"><img src="img/ICONO-NEGATIVO.svg" alt="Icono Revels">REVELS</a></h2>
+        </div>
+        <div class="account">
+            <a href="account.php"><img src="img/Profile.svg" alt="Perfil"></a>
+        </div>
+        <div class="logout">
+            <a href="logout.php"><img src="img/Logout.svg" alt="Cerrar Sesión"></a>
+        </div>
+    </div>
     <h1>ACCOUNT Revels | Ismael</h1>
     <form action="" method="post">
         <label for="email">Email</label>

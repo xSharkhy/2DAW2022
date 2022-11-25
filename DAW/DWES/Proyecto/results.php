@@ -17,6 +17,7 @@ if (isset($_POST)) :
             // Si no lo sigue, lo seguimos
             $conexion->query('INSERT INTO follows (userid, userfollowed) VALUES (' . $_SESSION['id'] . ', ' . $_POST['userfollowed'] . ');');
         endif;
+        header('Location: index.php');
     else :
         if (isset($_POST['search']) && !empty($_POST['search'])) :
             // Buscamos los usuarios que coincidan con la búsqueda
@@ -55,7 +56,7 @@ endif;
                                 <input type="submit" value="Dejar de seguir">
                             <?php else : ?>
                                 <input type="submit" value="Seguir">
-                            <?php endif; ?>
+                            <?php endif;?>
                         </form>
                     </div>
                 <?php endwhile; ?>

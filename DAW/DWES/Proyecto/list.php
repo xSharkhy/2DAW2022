@@ -17,15 +17,28 @@ $consulta->execute([$_SESSION['id']]);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIST Revels | Ismael</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/ICONO-NEGATIVO.svg" type="image/x-icon">
 </head>
 
-<body>
+<body class="back-end">
+    <div class="header">
+        <div class="revels-icon">
+            <h2 id="headerh2"><a href="index.php"><img src="img/ICONO-NEGATIVO.svg" alt="Icono Revels">REVELS</a></h2>
+        </div>
+        <div class="account">
+            <a href="account.php"><img src="img/Profile.svg" alt="Perfil"></a>
+        </div>
+        <div class="logout">
+            <a href="logout.php"><img src="img/Logout.svg" alt="Cerrar Sesión"></a>
+        </div>
+    </div>
     <h1>LIST Revels | Ismael</h1>
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
+                <th>Revel ID</th>
+                <th>Contenido</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
             </tr>

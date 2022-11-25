@@ -10,13 +10,13 @@
             </form>
         </div>
         <div class="new">
-            <a href="new.php"><img src="img/NewPost.svg" alt="Nuevo Revels"> Nuevo REVELS</a>
+            <a href="new.php"><img src="img/NewPost.svg" alt="Nuevo Revels"></a>
         </div>
         <div class="account">
-            <a href="account.php"><img src="img/Profile.svg" alt="Perfil"> Perfil</a>
+            <a href="account.php"><img src="img/Profile.svg" alt="Perfil"></a>
         </div>
         <div class="logout">
-            <a href="logout.php"><img src="img/Logout.svg" alt="Cerrar Sesión"> Cerrar sesión</a>
+            <a href="logout.php"><img src="img/Logout.svg" alt="Cerrar Sesión"></a>
         </div>
     </div>
     <div class="aside">
@@ -28,7 +28,7 @@
                 $user = $conexion->query('SELECT * FROM users WHERE id = ' . $follow['userfollowed'] . ';');
                 $user = $user->fetch();
         ?>
-                <a href="profile.php?id=<?= $user['id'] ?>"><?= $user['usuario'] ?></a>
+                <h4>@<?= $user['usuario'] ?></h4>
             <?php
             endwhile;
         else :
